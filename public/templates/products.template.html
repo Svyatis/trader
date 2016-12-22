@@ -1,0 +1,49 @@
+<div id="main">
+    <div class="container">
+        <div class="row main-row">
+            <div class="col-md-10">
+
+                <section>
+                    <h2>Наша продукція</h2>
+                        <div class="products col-md-4" ng-repeat="product in $ctrl.products">
+                            <section class="col-md-4">
+                            <a href="#"><img src="images/pic2.jpg" alt="" class="left" /></a>
+                            </section>
+                            <section class="col-md-8">
+                            <h4>{{product.name}}</h4>
+                            <p>{{product.price | currency: $}}</p>
+                            <footer>
+                                <ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" quantity="2" quantity-max="20">Add to Cart</ngcart-addtocart>
+                            </footer>
+                            </section>
+                        </div>
+                </section>
+
+            </div>
+            <div class="col-md-2">
+
+                <section>
+                    <input type="text" id="searchField" name="search">
+                    <br><br>
+                    <input type="submit" class="btn-success" id="searchButton" value="Пошук">
+
+                    <hr>
+
+                    <h3>Фільтрувати за ціною:</h3>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><input title="min-price" class="moneyFilter" type="number" min="0" value="0"></td>
+                            <td>-</td>
+                            <td><input title="max-price" class="moneyFilter" type="number" min="0" value="500"></td>
+                            <td>грн.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+</div>

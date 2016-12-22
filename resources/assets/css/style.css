@@ -1,0 +1,50 @@
+.btn-success {
+    margin-top: 4px;
+    margin-right: 20px;
+    width: 300px;
+    height: 40px;
+}
+
+#addButton {
+    font-size: 19px;
+}
+
+.table {
+    margin-top: -20px;
+}
+
+.table-hover tr {
+    cursor: pointer;
+}
+
+.tableDetail tr{
+    height: 70px;
+    font-size: 30px;
+    font-family: Laksaman;
+    border: 2px grey;
+}
+
+.moder {
+    height: 33px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.header {
+    text-align: center;
+    font-family: Laksaman;
+}
+
+.editButtons {
+    margin-left: 40%;
+    margin-top: 35%;
+}
+
+.editable {
+    width: 38%;
+}
+
+.editableCancel {
+    width: 20%;
+}
