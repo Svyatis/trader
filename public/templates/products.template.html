@@ -13,7 +13,14 @@
                             <h4>{{product.name}}</h4>
                             <p>{{product.price | currency: $}}</p>
                             <footer>
-                                <ngcart-addtocart id="{{ product.id }}" name="{{ product.name }}" price="{{ product.price }}" quantity="2" quantity-max="20">Add to Cart</ngcart-addtocart>
+                                <ngcart-addtocart id="{{ product.id }}"
+                                                  name="{{ product.name }}"
+                                                  price="{{ product.price }}"
+                                                  quantity="{{ product.min_quantity }}"
+                                                  quantity-min="{{ product.min_quantity }}"
+                                                  quantity-max="{{ product.max_quantity }}">
+                                    Add to Cart
+                                </ngcart-addtocart>
                             </footer>
                             </section>
                         </div>

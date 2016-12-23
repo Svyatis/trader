@@ -5,12 +5,14 @@
 <div ng-show="attrs.id">
     <form name="addProduct">
         <span>
-            <input type="number" name="quantity"  min="{{ quantity }}" max="{{ quantityMax }}"
+            <input type="number" name="quantity"  min="{{ quantityMin }}" max="{{ quantityMax }}"
                    id="quantity" ng-model="q">
         </span>
         <input type="submit" class="btn buttonAdd"
+               data-toggle="modal"
+               data-target="#submit_request"
            ng-disabled="addProduct.quantity.$invalid"
-           ng-click="ngCart.addItem(id, name, price, q, data)"
+           ng-click="ngCart.addItem(id, name, price, q, quantityMin, quantityMax, data)"
            value="Купити"
            ng-transclude>
     </form>
@@ -18,3 +20,39 @@
         <span class="inBasketText">Цей товар у кошику </span><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;"> Видалити з кошика</a>
     </div>
 </div>
+
+<!--MODAL WINDOW OPENED WITH BUTTON "JOIN"-->
+<div class="modal fade" id="submit_request" role="dialog">
+    <div class="modal-dialog">
+        <!----------------- MODAL WINDOW CONTENT---------------->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    Add contacts to list:
+                </h4>
+            </div>
+            <div>
+                <ngcart-cart></ngcart-cart>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-no-background btn-sm"
+                        data-dismiss="modal"
+                        ng-click="">
+                    Cancel
+                </button>
+                <input  type="submit"
+                        class="btn btn-primary btn-sm"
+                        value="Submit"
+                        ng-disabled=""
+                        data-dismiss="modal"
+                        ng-click="basket()">
+            </div>
+
+        </div>
+    </div>
+</div><!--END OF THE MODAL WINDOW OPENED WITH BUTTON "JOIN"-->

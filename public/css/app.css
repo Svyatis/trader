@@ -7851,10 +7851,10 @@ ul.link-list li:first-child {
 }
 
 .button {
-  background-image: -webkit-linear-gradient(to bottom, maroon, #000);
-  background-image: -webkit-linear-gradient(top, maroon, #000);
-  background-image: linear-gradient(to bottom, maroon, #000);
-  background-color: #000;
+  background-image: -webkit-linear-gradient(to bottom, maroon, #0f0000);
+  background-image: -webkit-linear-gradient(top, maroon, #0f0000);
+  background-image: linear-gradient(to bottom, maroon, #0f0000);
+  background-color: #0f0000;
   display: inline-block;
   padding: 15px 25px 15px 25px;
   border-radius: 10px;
@@ -7872,15 +7872,19 @@ ul.link-list li:first-child {
 }
 
 .button:hover {
-  background-image: -webkit-linear-gradient(to bottom, #960018, #000);
-  background-image: -webkit-linear-gradient(top, #960018, #000);
-  background-image: linear-gradient(to bottom, #960018, #000);
-  background-color: #000;
+  background-image: -webkit-linear-gradient(to bottom, #960018, #0f0000);
+  background-image: -webkit-linear-gradient(top, #960018, #0f0000);
+  background-image: linear-gradient(to bottom, #960018, #0f0000);
+  background-color: #0f0000;
 }
 
 .button:focus {
   color: #fff;
   text-decoration: none;
+}
+
+.disabled {
+  display: none;
 }
 
 /* Desktop + Tablet */
@@ -7922,39 +7926,37 @@ ul.link-list li:first-child {
     box-sizing: content-box;
     position: relative;
     margin: 2.5% 0 2.5% 0;
-    padding: 0 40px 0 40px;
-    border-radius: 10px;
-    border: solid 1px #fff;
-    box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+    padding: 0 10px 0 10px;
+    /*border-radius: 10px;*/
+    /*border: solid 1px #fff;*/
+    /*box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);*/
     background-color: transparent;
     height: 84px;
+    width: 100%;
   }
   #logo {
     float: left;
-    height: 82px;
+    height: 96%;
     width: 200px;
-    margin-top: 1px;
-    background: #0f0000 url("/images/flag.png");
+    position: absolute;
+    left: 1%;
+    top: 2%;
+    background: -webkit-linear-gradient(#0f0000, transparent, transparent, #0f0000), url("/images/flagEdit1.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    -webkit-mask-image: -webkit-gradient(radial, left top, left bottom, from(black), to(transparent));
+    /*-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.7)), to(rgba(0,0,0,0)));*/
   }
   #header h1 {
     position: absolute;
-    color: #fff;
     font-size: 2.4em;
     letter-spacing: -2px;
     line-height: 82px;
-  }
-  #header h1 a {
-    color: #fff;
-    text-decoration: none;
+    padding-left: 3%;
   }
   #header nav {
     position: absolute;
     right: 40px;
-    top: 1px;
     line-height: 82px;
     text-transform: lowercase;
     font-size: 1.3em;
@@ -7968,50 +7970,48 @@ ul.link-list li:first-child {
     padding: 0 15px 0 15px;
   }
   #header nav a.current-page-item {
-    background-image: -webkit-linear-gradient(to bottom, maroon, #000);
-    background-image: -webkit-linear-gradient(top, maroon, #000);
-    background-image: linear-gradient(to bottom, maroon, #000);
-    background-color: #000;
-    box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.1), 0 0 5px 1px rgba(255, 255, 255, 0.1);
+    background-image: -webkit-linear-gradient(to bottom, #0f0000, maroon, #0f0000);
+    background-image: -webkit-linear-gradient(top, #0f0000, maroon, #0f0000);
+    background-image: linear-gradient(to bottom, #0f0000, maroon, #0f0000);
+    background-color: #0f0000;
+    /*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.1), 0 0 5px 1px rgba(255, 255, 255, 0.1);*/
   }
   #header nav a:hover {
     cursor: pointer;
-    background-image: -webkit-linear-gradient(to bottom, #960018, #000);
-    background-image: -webkit-linear-gradient(top, #960018, #000);
-    background-image: linear-gradient(to bottom, #960018, #000);
-    background-color: #000;
+    background-image: -webkit-linear-gradient(to bottom, #0f0000, #960018, #0f0000);
+    background-image: -webkit-linear-gradient(top, #0f0000, #960018, #0f0000);
+    background-image: linear-gradient(to bottom, #0f0000, #960018, #0f0000);
+    background-color: #0f0000;
     box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);
   }
   .basket {
     position: absolute;
-    top: 1px;
     right: 40px;
     width: 100px;
     height: 81px;
     display: inline-block;
     color: #fff;
-    background-image: -webkit-linear-gradient(to bottom, #00cc00, #000);
-    background-image: -webkit-linear-gradient(top, #00cc00, #000);
-    background-image: linear-gradient(to bottom, #00cc00, #000);
-    background-color: #000;
-    box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);
+    background-image: -webkit-linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
+    background-image: -webkit-linear-gradient(top, #0f0000, #00cc00, #00cc00, #0f0000);
+    background-image: linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
+    background-color: #0f0000;
+    /*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);*/
     text-align: center;
     vertical-align: middle;
     padding-top: 5px;
   }
   .basketEmpty {
     position: absolute;
-    top: 1px;
     right: 40px;
     width: 100px;
     height: 81px;
     display: inline-block;
     color: #fff;
-    background-image: -webkit-linear-gradient(to bottom, #006600, #000);
-    background-image: -webkit-linear-gradient(top, #006600, #000);
-    background-image: linear-gradient(to bottom, #006600, #000);
-    background-color: #000;
-    box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);
+    background-image: -webkit-linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
+    background-image: -webkit-linear-gradient(top, #0f0000, #004d00, #004d00, #0f0000);
+    background-image: linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
+    background-color: #0f0000;
+    /*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);*/
     text-align: center;
     vertical-align: middle;
     padding-top: 25px;
@@ -8061,7 +8061,7 @@ ul.link-list li:first-child {
     box-sizing: content-box;
     position: relative;
     height: 265px;
-    border: solid 1px #fff;
+    /*border: solid 1px #fff;*/
     border-radius: 10px;
     box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -8103,6 +8103,15 @@ ul.link-list li:first-child {
     float: left;
     height: 180px;
   }
+  #quantity {
+    background-color: transparent;
+    border-radius: 5%;
+    border-color: #006600;
+    color: #fff;
+  }
+  #quantity:focus {
+    outline: none;
+  }
   #searchField {
     background-color: transparent;
     border-radius: 5%;
@@ -8135,6 +8144,96 @@ ul.link-list li:first-child {
   /* Footer */
   #footer-wrapper {
     padding: 2em 0;
+    text-align: center;
+  }
+  #footer-wrapper h3 {
+    color: #003200;
+  }
+  #footer-wrapper a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #000;
+  }
+  #footer-wrapper a:hover {
+    text-decoration: none;
+    color: #003200;
+  }
+  sup {
+    font-size: 14px;
+    top: -0.3em;
+  }
+  .socialSection section input[type=email] {
+    width: 100%;
+  }
+  .socialSection section input[type=submit] {
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #003200;
+    border-color: #003200;
+  }
+  .social {
+    display: block;
+    text-align: center;
+  }
+  .socialButtons {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 2px;
+  }
+  .socialButtons:hover {
+    height: 54px;
+    width: 54px;
+    margin: 0;
+  }
+  #facebook {
+    background: #e3e9dc url("/images/facebook_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #facebook:hover {
+    background: #e3e9dc url("/images/facebook_icon_black2.png") no-repeat;
+    background-size: 100%;
+  }
+  #vk {
+    background: #e3e9dc url("/images/vk_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #vk:hover {
+    background: #e3e9dc url("/images/vk_icon_black2.png") no-repeat;
+    background-size: 100%;
+  }
+  #youtube {
+    background: #e3e9dc url("/images/youtube_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #youtube:hover {
+    background: #e3e9dc url("/images/youtube_icon_black2.png") no-repeat;
+    background-size: 100%;
+  }
+  #twitter {
+    background: #e3e9dc url("/images/twitter_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #twitter:hover {
+    background: #e3e9dc url("/images/twitter_icon_black2.png") no-repeat;
+    background-size: 100%;
+  }
+  #picasso {
+    background: #e3e9dc url("/images/picasso_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #picasso:hover {
+    background: #e3e9dc url("/images/picasso_icon_black2.png") no-repeat;
+    background-size: 100%;
+  }
+  #googlePlus {
+    background: #e3e9dc url("/images/google_plus_icon_black.png") no-repeat;
+    background-size: 100%;
+  }
+  #googlePlus:hover {
+    background: #e3e9dc url("/images/google_plus_icon_black2.png") no-repeat;
+    background-size: 100%;
   }
   /* Copyright */
   #copyright {
