@@ -3,7 +3,7 @@
 
 </div>
 <div ng-show="attrs.id">
-    <form name="addProduct">
+    <form name="addProduct" id="addProduct">
         <span>
             <input type="number" name="quantity"  min="{{ quantityMin }}" max="{{ quantityMax }}"
                    id="quantity" ng-model="q">
@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<!--MODAL WINDOW OPENED WITH BUTTON "JOIN"-->
+<!--MODAL WINDOW OPENED WITH BUTTON "Купити"-->
 <div class="modal fade" id="submit_request" role="dialog">
     <div class="modal-dialog">
         <!----------------- MODAL WINDOW CONTENT---------------->
@@ -31,7 +31,7 @@
                     &times;
                 </button>
                 <h4 class="modal-title">
-                    Add contacts to list:
+                    Кошик
                 </h4>
             </div>
             <div>
@@ -40,14 +40,14 @@
 
             <div class="modal-footer">
                 <button type="button"
-                        class="btn btn-no-background btn-sm"
+                        class="modalCancel btn-sm"
                         data-dismiss="modal"
                         ng-click="">
-                    Cancel
+                    Продовжити покупки
                 </button>
                 <input  type="submit"
-                        class="btn btn-primary btn-sm"
-                        value="Submit"
+                        class="modalBasket btn-sm"
+                        value="Оформити замовлення"
                         ng-disabled=""
                         data-dismiss="modal"
                         ng-click="basket()">

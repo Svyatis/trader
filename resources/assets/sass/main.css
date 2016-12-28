@@ -16,6 +16,10 @@ body {
     line-height: 1;
 }
 
+hr {
+    margin: 2px 0 2px 0;
+}
+
 ol, ul {
     list-style: none;
 }
@@ -95,7 +99,7 @@ strong {
 
 img.left {
     float: left;
-    margin: 2px 1.25em 0 0;
+    padding: 0 5px 5px 2px;
 }
 
 img.top {
@@ -198,7 +202,7 @@ ul.link-list li:first-child {
 }
 
 .disabled {
-	display: none;
+    visibility: hidden;
 }
 
 /* Desktop + Tablet */
@@ -207,34 +211,16 @@ ul.link-list li:first-child {
 				/* Basic */
 				body {
 					min-width: 100%;
-				}
-
-				section, article {
-					margin: 0 0 60px 0;
+                    background: rgba(40,40,40,0.8) url('/images/background/3.jpg') no-repeat fixed;
+                    background-size: cover;
 				}
 
 				section:last-child, article:last-child {
 					margin-bottom: 0;
 				}
 
-				section.left-content {
-					padding-right: 30px;
-				}
-
-				section.right-content {
-					padding-left: 30px;
-				}
-
 				section.middle-content {
 					padding: 0 30px 0 30px;
-				}
-
-				ul.small-image-list img {
-					width: 78px;
-				}
-
-				ul.big-image-list img {
-					width: 178px;
 				}
 
 				/* Reusable */
@@ -242,56 +228,36 @@ ul.link-list li:first-child {
 					width: 100%;
 				}
 
-				/* Header */
-				#header-wrapper {
-					background-color: #0f0000;
-				}
+                #cartDisabledTd {
+                    width: 80px;
+                }
 
+				/* Header */
+                #header-wrapper .col-md-2, #header-wrapper .col-md-8 {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
 				#header {
-					-moz-box-sizing: content-box;
-					-webkit-box-sizing: content-box;
-					box-sizing: content-box;
-					position: relative;
-					margin: 2.5% 0 2.5% 0;
-					padding: 0 10px 0 10px;
-					/*border-radius: 10px;*/
-					/*border: solid 1px #fff;*/
-					/*box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);*/
-					background-color: transparent;
-					height: 84px;
-					width: 100%;
+                    display: inline-block;
+                    position: relative;
+                    margin: 0 0 0 15%;
+                    background-color: rgba(15, 15, 15, 0.8);
+                    height: 84px;
+                    width: 75%;
 				}
 
                 #logo {
-                    float: left;
-                    height: 96%;
-                    width: 200px;
-					position: absolute;
-					left: 1%;
-					top: 2%;
-                    background: -webkit-linear-gradient(#0f0000,transparent,transparent,#0f0000), url('/images/flagEdit1.png');
-                    background-size: cover;
-                    background-repeat: no-repeat;
-                    background-position: 50% 50%;
-					/*-webkit-mask-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.7)), to(rgba(0,0,0,0)));*/
+                    height: 84px;
+                    width: 14.6%;
+                    position: absolute;
+                    background: linear-gradient(to right, transparent, transparent, transparent, rgba(180,0,0,1)), url(/images/flagEdit3.png) no-repeat 50%;
+                    opacity: 0.4;
                 }
 
-				#header h1 {
-					position: absolute;
-					font-size: 2.4em;
-					letter-spacing: -2px;
-					line-height: 82px;
-					padding-left: 3%;
-				}
-
 				#header nav {
-					position: absolute;
-					right: 40px;
-					line-height: 82px;
-					text-transform: lowercase;
-					font-size: 1.3em;
+					line-height: 84px;
+					text-transform: uppercase;
 					letter-spacing: 0;
-					padding-right: 100px;
 				}
 
 				#header nav a {
@@ -302,62 +268,42 @@ ul.link-list li:first-child {
 				}
 
 				#header nav a.current-page-item {
-					background-image: -moz-linear-gradient(to bottom, #0f0000, maroon, #0f0000);
-					background-image: -webkit-linear-gradient(to bottom, #0f0000, maroon, #0f0000);
-					background-image: -ms-linear-gradient(to bottom, #0f0000, maroon, #0f0000);
-					background-image: linear-gradient(to bottom, #0f0000, maroon, #0f0000);
-					background-color: #0f0000;
-					/*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.1), 0 0 5px 1px rgba(255, 255, 255, 0.1);*/
+					background-color: rgba(230,0,0,0.3);
 				}
 
 				#header nav a:hover {
 					cursor: pointer;
-					background-image: -moz-linear-gradient(to bottom, #0f0000, #960018, #0f0000);
-					background-image: -webkit-linear-gradient(to bottom, #0f0000, #960018, #0f0000);
-					background-image: -ms-linear-gradient(to bottom, #0f0000, #960018, #0f0000);
-					background-image: linear-gradient(to bottom, #0f0000, #960018, #0f0000);
-					background-color: #0f0000;
-					box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);
+					background-color: rgba(230,0,0,0.3);
 				}
 
-                .basket {
-                    position: absolute;
-                    right: 40px;
-                    width: 100px;
-                    height: 81px;
-                    display: inline-block;
-                    color: #fff;
-                    background-image: -moz-linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
-                    background-image: -webkit-linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
-                    background-image: -ms-linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
-                    background-image: linear-gradient(to bottom, #0f0000, #00cc00, #00cc00, #0f0000);
-                    background-color: #0f0000;
-                    /*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);*/
-                    text-align: center;
-                    vertical-align: middle;
-                    padding-top: 5px;
-                }
-
                 .basketEmpty {
-                    position: absolute;
-                    right: 40px;
-                    width: 100px;
-                    height: 81px;
+                    cursor: pointer;
                     display: inline-block;
+                    position: relative;
+                    background-color: rgba(1, 104, 21, 0.6);
+                    height: 84px;
+                    width: 10%;
                     color: #fff;
-                    background-image: -moz-linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
-                    background-image: -webkit-linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
-                    background-image: -ms-linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
-                    background-image: linear-gradient(to bottom, #0f0000, #004d00, #004d00, #0f0000);
-                    background-color: #0f0000;
-                    /*box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);*/
                     text-align: center;
                     vertical-align: middle;
                     padding-top: 25px;
                 }
 
-                #header span {
+                #basketNav {
                     cursor: pointer;
+                    display: inline-block;
+                    position: relative;
+                    background-color: rgba(1, 104, 21, 0.6);
+                    height: 84px;
+                    width: 10%;
+                    color: #fff;
+                    text-align: center;
+                    vertical-align: middle;
+                    padding-top: 7px;
+                }
+
+                svg path {
+                    fill: #fff;
                 }
 
                 .inBasket {
@@ -375,25 +321,18 @@ ul.link-list li:first-child {
 
                 .buttonAdd {
                     color: #fff;
-                    background-image: -moz-linear-gradient(to bottom, #006600, #000);
-                    background-image: -webkit-linear-gradient(to bottom, #006600, #000);
-                    background-image: -ms-linear-gradient(to bottom, #006600, #000);
-                    background-image: linear-gradient(to bottom, #006600, #000);
-                    background-color: #000;
-                    border-color: #0f0000;
+                    background-color: rgba(1, 104, 21, 0.6);
+                    border-color: rgba(15,15,15, 0.8);
                     height: 32px;
+                    width: 50%;
                     padding-top: 1px;
                     outline:0;
                 }
 
                 .buttonAdd:hover {
                     color: #fff;
-                    background-image: -moz-linear-gradient(to bottom, #00cc00, #000);
-                    background-image: -webkit-linear-gradient(to bottom, #00cc00, #000);
-                    background-image: -ms-linear-gradient(to bottom, #00cc00, #000);
-                    background-image: linear-gradient(to bottom, #00cc00, #000);
-                    background-color: #000;
-                    border-color: #0f0000;
+                    background-color: rgba(1, 204, 21, 0.6);
+                    border-color: rgba(15,15,15, 0.8);
                     outline:0;
                 }
 
@@ -402,8 +341,13 @@ ul.link-list li:first-child {
                 }
 
 				/* Banner */
+                .banner-container {
+                    background-color: transparent;
+                }
+
 				#banner-wrapper {
-					background: #0f0000;
+                    margin-top: 2px;
+					background: transparent;
                     color: maroon;
 				}
 
@@ -413,11 +357,10 @@ ul.link-list li:first-child {
 					box-sizing: content-box;
 					position: relative;
 					height: 265px;
-                    /*border: solid 1px #fff;*/
-					border-radius: 10px;
                     box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 					padding: 20px;
 					background: #0f0000 url('/images/alcohol.jpg') no-repeat 5px 5px;
+                    opacity: 0.8;
 					background-size: 100% 300px;
 				}
 
@@ -450,33 +393,193 @@ ul.link-list li:first-child {
 
 				/* Main */
 				#main {
-					background: #0f0000;
-					padding: 1em 0;
+					background: transparent;
+                    min-width: 100%;
+                    padding: 2px 0 20px 0;
 				}
+                .container {
+                    width: 90%;
+                    background-color: transparent;
+                }
+
+                .productsComponent {
+                    padding: 0 0 0 2px;
+                }
+
+                .productsNavComponent {
+                    padding-right: 0px;
+                }
+
+                .searchCol {
+                    background-color: rgba(15,15,15,0.8);
+                    padding: 30px 30px 30px 30px;
+                }
+
+                .productsNav {
+                    height: 30px;
+                    width: 100%;
+                    margin-bottom: 2px;
+                    background-color: rgba(15,15,15,0.8);
+                    box-shadow: 0 0 5px;
+                }
+
+                .productsNav a {
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    color: rgba(230,0,0,0.3);
+                    background-color: rgba(15,15,15,0.8);
+                }
+
+                .productsLink {
+                    display: inline-block;
+                    height: 30px;
+                    padding: 5px 0 5px 0;
+                    font-size: larger;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+                .productsLink:hover {
+                    background-color: rgba(230,0,0,0.3);
+                    text-decoration: none;
+                    color: #fff;
+                }
+
+                .productsLink:focus {
+                    color: #fff;
+                    background-color: rgba(230,0,0,0.3);
+                    text-decoration: none;
+                }
+
+                .productWinesNav {
+                    background-color: rgba(15, 15, 15, 0.8);
+                    height: 160px;
+                }
+
+                .productGroceryNav {
+                    background-color: rgba(15, 15, 15, 0.8);
+                    height: 240px;
+                }
+
+                .winesNavHeader {
+                    display: block;
+                    float: left;
+                    padding: 5px 0 5px 0;
+                    margin-bottom: 10px;
+                    height: 30px;
+                    width: 100%;
+                    text-align: center;
+                    color: #fff;
+                    background-color: rgba(15, 15, 15, 0.9);
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    color: rgba(230,0,0,0.3);
+                    font-size: 20px;
+                    letter-spacing: normal;
+                }
+
+                .productsWinesNavButton {
+                    display: block;
+                    float: left;
+                    padding: 5px 0 5px 0;
+                    margin-bottom: 10px;
+                    height: 30px;
+                    width: 100%;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 17px;
+                    text-decoration: none;
+                    letter-spacing: normal;
+                }
+
+                .productsWinesNavButton:hover {
+                    background-color: rgba(230,0,0,0.3);
+                }
+
+                .productsWinesNavButton:focus {
+                    background-color: rgba(230,0,0,0.3);
+                }
 
                 .products {
                     display: inline-table;
-                    float: left;
-                    height: 180px;
+                    min-height: 410px;
+                    width: 32.7%;
+                    padding-top: 10px;
+                    margin: 0 2px 2px 0;
+                    background-color: rgba(15, 15, 15, 0.8);
+                    box-shadow: 0 0 4px rgba(15, 15, 15, 0.8);
+                }
+
+                .products:hover {
+                    box-shadow: 0 0 25px #888;
+                }
+
+                .products .col-md-7 {
+                    padding: 0;
+                }
+
+                .products .col-md-5 {
+                    padding: 0 0 0 2px;
+                }
+
+                .products img.left {
+                    width: 100%;
+                    padding: 0;
+                }
+
+                .products p {
+                    color: #fff;
+                    margin: 0;
+                }
+
+                .products h4 {
+                    color: #006600;
+                }
+
+                .modal-content {
+                    background-color: #0f0000 !important;
+                    color: #fff;
+                    border: #fff solid 1px;
+                }
+                .table-responsive {
+                    margin-top: 5px;
+                }
+                .table-responsive tr {
+                    background-color: #0f0000 !important;
+                }
+                
+                .modalCancel {
+                    background-color: #fff;
+                    border-color: #fff;
+                    color: #006600;
+                }
+                
+                .modalBasket {
+                    background-color: #006600;
+                    border-color: #006600;
                 }
 
 				#quantity {
 					background-color: transparent;
 					border-radius: 5%;
 					border-color: #006600;
+                    padding-left: 50px;
+                    margin-left: 7px;
 					color: #fff;
+                    width: 40%;
 				}
 
 				#quantity:focus {
 					outline: none;
+                    width: 40%;
 				}
 
 				#searchField {
-					background-color: transparent;
+					background-color: rgba(15, 15, 15, 0.9);
 					border-radius: 5%;
-					border-color: maroon;
+					border-color: rgba(230,0,0,0.3);
 					color: maroon;
-					width: 200px;
+					width: 100%;
 				}
 				#searchField:focus {
 					outline: none !important;
@@ -484,44 +587,47 @@ ul.link-list li:first-child {
 
 				#searchButton {
 					border-radius: 5%;
-					border-color: maroon;
-					background-color: maroon;
-					width: 200px;
+					border-color: transparent;
+					background-color: rgba(230,0,0,0.3);
+					width: 100%;
 				}
 				#searchButton:focus {
 					outline: none !important;
 				}
 
-				.moneyFilter {
+				.moneyFilter td input{
 					border-radius: 5%;
-					border-color: maroon;
-					background-color: maroon;
-					width: 100px;
-					padding: 5px;
+					border-color: rgba(230,0,0,0.3);
+					background-color: rgba(15, 15, 15, 0.9);
+                    width: 100%;
 				}
-				.moneyFilter:focus {
-					outline: none;
+				.moneyFilter td input:focus {
+					outline: rgba(230,0,0,0.6);
 				}
 
 				/* Footer */
 				#footer-wrapper {
-					padding: 2em 0;
                     text-align: center;
 				}
 
+                #footer-wrapper .container {
+                    background-color: rgba(15,15,15,0.8);
+                    padding: 30px 0 40px 0;
+                }
+
                 #footer-wrapper h3 {
-                    color: #003200;
+                    color: rgba(1, 104, 21, 0.6);
                 }
 
                 #footer-wrapper a {
                     text-decoration: none;
                     font-weight: 500;
-                    color: #000;
+                    color: #fff;
                 }
 
                 #footer-wrapper a:hover {
                     text-decoration: none;
-                    color: #003200;
+                    color: rgba(1, 104, 21, 0.6);
                 }
 
 				sup {
@@ -529,20 +635,24 @@ ul.link-list li:first-child {
 					top: -0.3em;
 				}
 
+                .socialSection {
+                    min-height: 250px;
+                }
+
                 .socialSection section input[type=email] {
-                    width: 100%;
+                    width: 50%;
                 }
                 .socialSection section input[type=submit] {
                     width: 50%;
                     height: 40px;
-                    border-radius: 10px;
-                    background-color: #003200;
-                    border-color: #003200;
+                    background-color: rgba(1, 104, 21, 0.6);
+                    border-color: rgba(1, 104, 21, 0.6);
                 }
 
                 .social {
                     display: block;
                     text-align: center;
+                    margin-top: 10%;
                 }
 
                 .socialButtons {
@@ -558,56 +668,56 @@ ul.link-list li:first-child {
                 }
 
                 #facebook {
-                    background: #e3e9dc url('/images/facebook_icon_black.png') no-repeat;
+                    background: transparent url('/images/facebook_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #facebook:hover {
-                    background: #e3e9dc url('/images/facebook_icon_black2.png') no-repeat;
+                    background: transparent url('/images/facebook_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
                 #vk {
-                    background: #e3e9dc url('/images/vk_icon_black.png') no-repeat;
+                    background: transparent url('/images/vk_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #vk:hover {
-                    background: #e3e9dc url('/images/vk_icon_black2.png') no-repeat;
+                    background: transparent url('/images/vk_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
                 #youtube {
-                    background: #e3e9dc url('/images/youtube_icon_black.png') no-repeat;
+                    background: transparent url('/images/youtube_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #youtube:hover {
-                    background: #e3e9dc url('/images/youtube_icon_black2.png') no-repeat;
+                    background: transparent url('/images/youtube_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
                 #twitter {
-                    background: #e3e9dc url('/images/twitter_icon_black.png') no-repeat;
+                    background: transparent url('/images/twitter_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #twitter:hover {
-                    background: #e3e9dc url('/images/twitter_icon_black2.png') no-repeat;
+                    background: transparent url('/images/twitter_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
                 #picasso {
-                    background: #e3e9dc url('/images/picasso_icon_black.png') no-repeat;
+                    background: transparent url('/images/picasso_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #picasso:hover {
-                    background: #e3e9dc url('/images/picasso_icon_black2.png') no-repeat;
+                    background: transparent url('/images/picasso_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
                 #googlePlus {
-                    background: #e3e9dc url('/images/google_plus_icon_black.png') no-repeat;
+                    background: transparent url('/images/google_plus_icon_black.png') no-repeat;
                     background-size: 100%;
                 }
                 #googlePlus:hover {
-                    background: #e3e9dc url('/images/google_plus_icon_black2.png') no-repeat;
+                    background: transparent url('/images/google_plus_icon_black2.png') no-repeat;
                     background-size: 100%;
                 }
 
@@ -627,11 +737,11 @@ ul.link-list li:first-child {
 			}
 
 /* Tablet Only */
-@media screen and (min-width: 737px) and (max-width: 1200px) {
+@media screen and (min-width: 737px) and (max-width: 1024px) {
 
 				/* Basic */
 				body {
-					min-width: 1000px;
+					min-width: 100%;
 				}
 
 				/* Reusable */
@@ -642,6 +752,10 @@ ul.link-list li:first-child {
 				ul.big-image-list img {
 					width: 75px;
 				}
+
+                .row {
+                    margin: 0 -45px 0 -45px;
+                }
 
 				/* Header */
 				#header {
@@ -680,6 +794,17 @@ ul.link-list li:first-child {
 					font-size: 1.4em;
 					bottom: 85px;
 				}
+
+                /* Main */
+
+                #main {
+                    background: #0f0000;
+                    min-width: 100%;
+                    padding: 2px 0 20px 25px;
+                }
+                .container {
+                    width: 90%;
+                }
 
 				/* Footer */
 				#footer-wrapper {
@@ -812,7 +937,6 @@ ul.link-list li:first-child {
                 background-color: #000;
                 box-shadow: inset 0 1px 5px 1px rgba(0, 0, 0, 0.05), 0 0 5px 1px rgba(255, 255, 255, 0.05);
             }
-
 
                 /* Banner */
 			#banner-wrapper {

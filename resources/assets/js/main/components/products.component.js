@@ -7,7 +7,14 @@ module.exports = angular
     .module('mainModule.productsComponent', [])
     .component('productsComponent', {
         templateUrl: '/templates/products.template.html',
-        controller: ProductsCtrl
+        controller: ProductsCtrl,
+        transclude: true,
+        $routeConfig:
+            [
+                {path: '/wines', name: 'Wines', component: 'productsWinesComponent', useAsDefault: true},
+                {path: '/grocery', name: 'Grocery', component: 'productsGroceryComponent'},
+                {path: '/sweets', name: 'Sweets', component: 'productsSweetsComponent'}
+            ]
     });
 
 /**

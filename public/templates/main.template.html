@@ -2,19 +2,26 @@
     <div id="header-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="col-md-12 col-sm-12 text-center">
+                    <div class="col-md-2 col-sm-2" id="logo"></div>
 
-                    <header id="header">
-                        <div id="logo"></div>
+                    <header class="col-md-8 col-sm-8" id="header">
                         <nav id="nav" ng-init="$ctrl.go($location.path())">
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/'}" ng-click="$ctrl.go('/')">домашня</a>
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/about'}" ng-click="$ctrl.go('about')">про нас</a>
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/products'}" ng-click="$ctrl.go('products')">продукція</a>
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/share'}" ng-click="$ctrl.go('share')">акції</a>
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/vip'}" ng-click="$ctrl.go('vip')">vip клієнтам</a>
-                            <a ng-class="{'current-page-item':$ctrl.selectedTab == '/contacts'}" ng-click="$ctrl.go('contacts')">контакти</a>
+                            <a ng-class="$ctrl.selectedTab == '/' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               ng-click="$ctrl.go('/')">Главная</a>
+                            <a ng-class="$ctrl.selectedTab == '/about' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               ng-click="$ctrl.go('about')">О нас</a>
+                            <a ng-class="$ctrl.selectedTab == '/products' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               ng-click="$ctrl.go('products')">Продукция</a>
+                            <a ng-class="$ctrl.selectedTab == '/share' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               ng-click="$ctrl.go('share')">Акции</a>
+                            <a ng-class="$ctrl.selectedTab == '/vip' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               id="vipNavButton" ng-click="$ctrl.go('vip')">Отзывы</a>
+                            <a ng-class="$ctrl.selectedTab == '/contacts' ? 'col-md-2 col-sm-2 current-page-item' : 'col-md-2 col-sm-2'"
+                               ng-click="$ctrl.go('contacts')">Контакты</a>
                         </nav>
-                            <span ng-hide="showBasket" class="basketEmpty" ng-click="$ctrl.go('basket')">
+                    </header>
+                    <span ng-hide="showBasket" class="col-md-2 col-sm-2 basketEmpty" ng-click="$ctrl.go('basket')">
                                 <svg version="1.1"  class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" xml:space="preserve">
                                     <path d="M27.715,10.48l-2.938,6.312c-0.082,0.264-0.477,0.968-1.318,0.968H11.831
                                         c-0.89,0-1.479-0.638-1.602-0.904l-2.048-6.524C7.629,8.514,8.715,7.933,9.462,7.933c0.748,0,14.915,0,16.805,0
@@ -29,8 +36,7 @@
                                         C25.395,21.21,25.027,21.575,24.576,21.575L24.576,21.575z"/>
                                     </svg>
                             </span>
-                        <span ng-show="showBasket" ng-click="$ctrl.go('basket')"><ngcart-summary></ngcart-summary></span>
-                    </header>
+                    <span id="basketNav" class="col-md-2 col-sm-2" ng-show="showBasket" ng-click="$ctrl.go('basket')"><ngcart-summary></ngcart-summary></span>
 
                 </div>
             </div>
@@ -47,7 +53,7 @@
                         <div>
                             <div class="row">
                                 <div class="col-md-3 col-sm-6">
-                                    <h3>Режим работы</h3>
+                                    <h3>Режим роботи</h3>
                                     <ul>
                                         <li>Пн-Сб: 10<sup>00</sup>-18<sup>00</sup></li>
                                         <li>Вихідний: Неділя</li>

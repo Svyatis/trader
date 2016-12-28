@@ -13,7 +13,7 @@ module.exports = angular
             [
                 {path: '/', name: 'Home', component: 'homeComponent', useAsDefault: true},
                 {path: '/about', name: 'About', component: 'aboutComponent'},
-                {path: '/products', name: 'Products', component: 'productsComponent'},
+                {path: '/products/...', name: 'Products', component: 'productsComponent'},
                 {path: '/share', name: 'Share', component: 'shareComponent'},
                 {path: '/vip', name: 'Vip', component: 'vipComponent'},
                 {path: '/contacts', name: 'Contacts', component: 'contactsComponent'},
@@ -29,7 +29,7 @@ module.exports = angular
      * @param $location
      * @memberOf mainModule
      */
-    function MainCtrl($scope, $location, ngCart) {
+    function MainCtrl($scope, $location, ngCart, $timeout) {
         var $ctrl = this;
         ngCart.setTaxRate(9.5);
         ngCart.setShipping(7.99);
@@ -53,4 +53,10 @@ module.exports = angular
             $scope.showBasket = !ngCart.isEmpty();
         });
 
+        $scope.$on('selectedTab:changed', function() {
+            $timeout(function() {
+                $location.path('basket');
+                $ctrl.selectedTab = $location.path();
+            }, 300);
+        });
     }
