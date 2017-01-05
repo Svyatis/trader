@@ -1,42 +1,27 @@
-<div class="row main-row">
-    <div class="col-md-3 col-sm-3 productsNavComponent">
-        <a class="winesNavHeader">Продукты</a>
-        <div class="productGroceryNav">
-            <a class="productsWinesNavButton">Сыры</a>
-            <a class="productsWinesNavButton">Макароны</a>
-            <a class="productsWinesNavButton">Кофе</a>
-            <a class="productsWinesNavButton">Оливковое масло</a>
-            <a class="productsWinesNavButton">Икра</a>
-        </div>
-
-        <hr>
-
-        <a class="winesNavHeader">Поиск</a>
-        <div class="searchCol">
-            <input type="text" id="searchField" name="search">
-            <br><br>
-            <input type="submit" class="btn-success" id="searchButton" value="Поиск">
-        </div>
-
-        <hr>
-
-        <a class="winesNavHeader">Фильтры</a>
-        <div class="searchCol">
-            <h4>Фильтровать по цене:</h4>
-            <table class="moneyFilter">
-                <tbody>
-                <tr>
-                    <td><input title="min-price" type="number" min="0" value="0"></td>
-                    <td>-</td>
-                    <td><input title="max-price" type="number" min="0" value="500"></td>
-                    <td>грн.</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
+<div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+    <div class="navBlock">
+        <span class="col-md-12 winesNavHeader">Продукты</span>
+        <a>Сыры</a>
+        <a>Макароны</a>
+        <a>Кофе</a>
+        <a>Оливковое масло</a>
+        <a>Икра</a>
     </div>
-    <div class="col-md-9 col-sm-9">
-        <h2>Grocery page</h2>
+
+    <div class="navBlock">
+        <span class="col-md-12 winesNavHeader">Поиск</span>
+        <input type="text" id="searchField" name="search">
+        <br><br>
+        <input type="submit" class="btn" id="searchButton" value="Поиск">
     </div>
+
+    <div class="navBlock">
+        <span class="col-md-12 winesNavHeader">Фильтры</span>
+        <h4>Фильтровать по цене:</h4>
+        <input title="min-price" type="number" min="0" value="0">
+    </div>
+
+</div>
+<div class="col-md-9 col-sm-9">
+    <h2>Grocery page</h2>
 </div>

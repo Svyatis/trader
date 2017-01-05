@@ -1,17 +1,11 @@
-var angular = require('angular');
-    require('./main/main.module.js');
-    require('@angular/router/angular1/angular_1_router');
-    require('angular-resource');
-    require('ngCart/dist/ngCart');
-    require('angular-ui-bootstrap');
-
 angular.module('app',
     [
-        'mainModule',
+        'ui.router',
         'ngComponentRouter',
         'ngResource',
         'ngCart',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'mainModule'
     ])
     .config(function($locationProvider) {
         $locationProvider.html5Mode(true);

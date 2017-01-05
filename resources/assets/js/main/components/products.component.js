@@ -12,21 +12,19 @@ module.exports = angular
         $routeConfig:
             [
                 {path: '/wines', name: 'Wines', component: 'productsWinesComponent', useAsDefault: true},
-                {path: '/grocery', name: 'Grocery', component: 'productsGroceryComponent'},
-                {path: '/sweets', name: 'Sweets', component: 'productsSweetsComponent'}
+                {path: '/grocery', name: 'Grocery', component: 'productsGroceryComponent'}
             ]
     });
 
 /**
  * @name ProductsCtrl
- * @param TraderService
  * @param ngCart
+ * @param $location
  * @memberOf mainModule
  */
-function ProductsCtrl(TraderService, ngCart) {
+function ProductsCtrl(ngCart, $location) {
     var $ctrl = this;
-
-    TraderService.getProducts().get().$promise.then(function(data) {
-        $ctrl.products = data.products;
-    });
+    $ctrl.class = function(path) {
+        return (path == $location.path());
+    };
 }

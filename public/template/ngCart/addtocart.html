@@ -1,23 +1,20 @@
-<div ng-hide="attrs.id">
-    <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
 
-</div>
 <div ng-show="attrs.id">
-    <form name="addProduct" id="addProduct">
-        <span>
-            <input type="number" name="quantity"  min="{{ quantityMin }}" max="{{ quantityMax }}"
-                   id="quantity" ng-model="q">
-        </span>
-        <input type="submit" class="btn buttonAdd"
-               data-toggle="modal"
-               data-target="#submit_request"
-           ng-disabled="addProduct.quantity.$invalid"
-           ng-click="ngCart.addItem(id, name, price, q, quantityMin, quantityMax, data)"
-           value="Купити"
-           ng-transclude>
-    </form>
-    <div  ng-show="inCart()" class="inBasket">
-        <span class="inBasketText">Цей товар у кошику </span><a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;"> Видалити з кошика</a>
+    <div ng-hide="inCart()">
+        <form name="addProduct">
+            <span class="center-block text-center">
+                <input type="number" name="quantity"  min="{{ quantityMin }}" max="{{ quantityMax }}"
+                       id="quantity" step="{{ quantityMin }}" ng-model="q" required>
+                <input type="submit" class="btn buttonAdd" data-toggle="modal" data-target="#submit_request"
+                   ng-disabled="addProduct.quantity.$invalid"
+                   ng-click="ngCart.addItem(id, name, price, q, quantityMin, quantityMax, data)"
+                   value="Купити" ng-transclude>
+            </span>
+        </form>
+    </div>
+    <div class="text-center" ng-show="inCart()">
+        <span>Цей товар у кошику </span><br>
+        <a ng-click="ngCart.removeItemById(id)"> Видалити з кошика</a>
     </div>
 </div>
 

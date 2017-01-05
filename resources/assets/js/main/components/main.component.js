@@ -17,7 +17,8 @@ module.exports = angular
                 {path: '/share', name: 'Share', component: 'shareComponent'},
                 {path: '/vip', name: 'Vip', component: 'vipComponent'},
                 {path: '/contacts', name: 'Contacts', component: 'contactsComponent'},
-                {path: '/basket', name: 'Basket', component: 'basketComponent'}
+                {path: '/basket', name: 'Basket', component: 'basketComponent'},
+                {path: '**', component: 'homeComponent'}
             ]
     });
 
@@ -25,23 +26,21 @@ module.exports = angular
      * @name MainCtrl
      * @param ngCart
      * @param $scope
-     * @param $rootScope
+     * @param $timeout
      * @param $location
+     * @param TraderService
      * @memberOf mainModule
      */
-    function MainCtrl($scope, $location, ngCart, $timeout) {
+    function MainCtrl($scope, $location, ngCart, $timeout, TraderService) {
         var $ctrl = this;
-        ngCart.setTaxRate(9.5);
-        ngCart.setShipping(7.99);
+        $ctrl.products = {};
 
-        /**
-         * @name function go
-         * @desc highlight nav tabs
-         * @memberOf MainCtrl
-         */
-        $ctrl.go = function(path) {
-            $location.path(path);
-            $ctrl.selectedTab = $location.path();
+        TraderService.getProducts().get().$promise.then(function(data) {
+            $ctrl.products = data.products;
+        });
+
+        $ctrl.class = function(path) {
+            return (path == $location.path());
         };
 
         $scope.basket = function () {

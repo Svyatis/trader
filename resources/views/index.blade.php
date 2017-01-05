@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  ng-app="app">
+<html ng-app="app">
 <head>
     <base href="/">
     <title>Компанія</title>

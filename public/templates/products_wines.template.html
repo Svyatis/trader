@@ -1,60 +1,44 @@
-<div class="row main-row">
-    <div class="col-md-3 col-sm-3 productsNavComponent">
-        <a class="winesNavHeader">Вина</a>
-        <div class="productWinesNav">
-            <a class="productsWinesNavButton">Игристые</a>
-            <a class="productsWinesNavButton">Сухие</a>
-            <a class="productsWinesNavButton">Полусладкие</a>
-        </div>
-
-        <hr>
-
-        <a class="winesNavHeader">Поиск</a>
-        <div class="searchCol">
-            <input type="text" id="searchField" name="search">
-            <br><br>
-            <input type="submit" class="btn-success" id="searchButton" value="Поиск">
-        </div>
-
-        <hr>
-
-        <a class="winesNavHeader">Фильтры</a>
-        <div class="searchCol">
-            <h4>Фильтровать по цене:</h4>
-            <table class="moneyFilter">
-                <tbody>
-                <tr>
-                    <td><input title="min-price" type="number" min="0" value="0"></td>
-                    <td>-</td>
-                    <td><input title="max-price" type="number" min="0" value="500"></td>
-                    <td>грн.</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
+<div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+    <div class="navBlock">
+    <span class="col-md-12 winesNavHeader">Вина</span>
+        <a>Игристые</a>
+        <a>Сухие</a>
+        <a>Полусладкие</a>
     </div>
-    <div class="col-md-9 col-sm-9 productsComponent">
-        <section class="products col-md-4 col-sm-3" ng-repeat="product in $ctrl.products">
 
-            <div class="col-md-12">
-            <img src="images/pic2.jpg" alt="" class="left"/>
-            </div>
+    <div class="navBlock">
+    <span class="col-md-12 winesNavHeader">Поиск</span>
+        <input type="text" name="search">
+        <br><br>
+        <input type="submit" class="btn" value="Поиск">
+    </div>
 
-            <div id="addProductSection" class="col-md-12">
+    <div class="navBlock">
+    <span class="col-md-12 winesNavHeader">Фильтры</span>
+        <h4>Фильтровать по цене:</h4>
+        <input title="min-price" type="number" min="0" value="0">
+    </div>
+
+</div>
+<div class="col-md-9 col-sm-9 productsComponent">
+        <div class="products col-md-3 col-sm-3" ng-repeat="product in $ctrl.products">
+            <img src="images/pic2.jpg" alt="" class="center-block"/>
+
+            <div id="productsDescription">
             <h4>{{product.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{product.price | currency: '₴ '}} грн.</p>
             </div>
 
-            <ngcart-addtocart id="{{ product.id }}"
-                              name="{{ product.name }}"
-                              price="{{ product.price }}"
-                              quantity="{{ product.min_quantity }}"
-                              quantity-min="{{ product.min_quantity }}"
-                              quantity-max="{{ product.max_quantity }}">
-                Add to Cart
-            </ngcart-addtocart>
-        </section>
-    </div>
+            <div id="productsAddToCartSection">
+                <ngcart-addtocart id="{{ product.id }}"
+                                  name="{{ product.name }}"
+                                  price="{{ product.price }}"
+                                  quantity="{{ product.min_quantity }}"
+                                  quantity-min="{{ product.min_quantity }}"
+                                  quantity-max="{{ product.max_quantity }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
 </div>

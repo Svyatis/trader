@@ -1,9 +1,10 @@
-<div id="main">
-    <div class="container">
-        <div class="productsNav">
-            <a class="col-md-6 productsLink" ng-link="['Wines']">Вина</a>
-            <a class="col-md-6 productsLink" ng-link="['Grocery']">Продукты</a>
-        </div>
-        <ng-outlet></ng-outlet>
+<div id="productsPageWrapper">
+    <div class="productsNav">
+        <a ng-class="{'current-page-item': $ctrl.class('/products/wines')}"
+           class="col-md-6 productsLink" ng-link="['Wines']">Вина</a>
+        <a ng-class="{'current-page-item': $ctrl.class('/products/grocery')}"
+           class="col-md-6 productsLink" ng-link="['Grocery']">Продукты</a>
     </div>
+
+    <ng-outlet></ng-outlet>
 </div>

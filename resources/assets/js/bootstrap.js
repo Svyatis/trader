@@ -1,3 +1,10 @@
+var angular = require('angular');
+require('angular-ui-router');
+require('@angular/router/angular1/angular_1_router');
+require('angular-resource');
+require('ngCart/dist/ngCart');
+require('angular-ui-bootstrap');
+require('./main/main.module.js');
 
 window._ = require('lodash');
 

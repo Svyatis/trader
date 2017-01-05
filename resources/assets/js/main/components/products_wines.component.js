@@ -7,19 +7,21 @@ module.exports = angular
     .module('mainModule.productsWinesComponent', [])
     .component('productsWinesComponent', {
         templateUrl: '/templates/products_wines.template.html',
-        controller: ProductsWinesCtrl
+        controller: ProductsWinesCtrl,
+        require: {
+            main: '^appMain'
+        }
     });
 
 /**
  * @name ProductsWinesCtrl
- * @param TraderService
  * @param ngCart
  * @memberOf mainModule
  */
-function ProductsWinesCtrl(TraderService, ngCart) {
+function ProductsWinesCtrl(ngCart) {
     var $ctrl = this;
 
-    TraderService.getProducts().get().$promise.then(function(data) {
-        $ctrl.products = data.products;
-    });
+    this.$onInit = function () {
+        $ctrl.products = $ctrl.main.products;
+    };
 }

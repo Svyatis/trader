@@ -1,16 +1,14 @@
-var angular =   require('angular');
-                require('./components/main.component');
-                require('./components/home.component');
-                require('./components/about.component');
-                require('./components/products.component');
-                require('./components/products_wines.component');
-                require('./components/products_grocery.component');
-                require('./components/products_sweets.component');
-                require('./components/share.component');
-                require('./components/vip.component');
-                require('./components/contacts.component');
-                require('./components/basket.component');
-                require('./services/trader.service');
+require('./components/main.component');
+require('./components/home.component');
+require('./components/about.component');
+require('./components/products.component');
+require('./components/products_wines.component');
+require('./components/products_grocery.component');
+require('./components/share.component');
+require('./components/vip.component');
+require('./components/contacts.component');
+require('./components/basket.component');
+require('./services/trader.service');
 
 module.exports = angular.module("mainModule", [
     // components
@@ -20,7 +18,6 @@ module.exports = angular.module("mainModule", [
     'mainModule.productsComponent',
     'mainModule.productsWinesComponent',
     'mainModule.productsGroceryComponent',
-    'mainModule.productsSweetsComponent',
     'mainModule.shareComponent',
     'mainModule.vipComponent',
     'mainModule.contactsComponent',
