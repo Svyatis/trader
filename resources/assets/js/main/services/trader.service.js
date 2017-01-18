@@ -16,11 +16,19 @@ module.exports = angular
 function TraderService($resource, API_URL) {
 
     /**
-     * @name function getContacts
+     * @name function getWines
      * @desc sends request for all contacts
      */
     this.getProducts = function() {
         return $resource(API_URL + 'products')
+    };
+
+    /**
+     * @name function getGrocery
+     * @desc sends request for all grocery
+     */
+    this.getGrocery = function() {
+        return $resource(API_URL + 'grocery')
     };
 
     /**

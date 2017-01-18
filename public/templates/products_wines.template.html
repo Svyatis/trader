@@ -1,9 +1,9 @@
 <div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
     <div class="navBlock">
     <span class="col-md-12 winesNavHeader">Вина</span>
-        <a>Игристые</a>
-        <a>Сухие</a>
-        <a>Полусладкие</a>
+        <a ui-sref="products.wines.sparkling" ui-sref-active="current-page-item">Игристые</a>
+        <a ui-sref="products.wines.dry" ui-sref-active="current-page-item">Сухие</a>
+        <a ui-sref="products.wines.sweet" ui-sref-active="current-page-item">Полусладкие</a>
     </div>
 
     <div class="navBlock">
@@ -20,25 +20,28 @@
     </div>
 
 </div>
-<div class="col-md-9 col-sm-9 productsComponent">
-        <div class="products col-md-3 col-sm-3" ng-repeat="product in $ctrl.products">
-            <img src="images/pic2.jpg" alt="" class="center-block"/>
 
-            <div id="productsDescription">
-            <h4>{{product.name}}</h4>
-            <span>Код товара: U22794</span>
-            <p>{{product.price | currency: '₴ '}} грн.</p>
-            </div>
+<ui-view>
+    <div class="col-md-9 col-sm-9 productsComponent">
+            <div class="products col-md-3 col-sm-3" ng-repeat="wine in $ctrl.main.wines">
+                <img src="images/pic2.jpg" alt="" class="center-block"/>
 
-            <div id="productsAddToCartSection">
-                <ngcart-addtocart id="{{ product.id }}"
-                                  name="{{ product.name }}"
-                                  price="{{ product.price }}"
-                                  quantity="{{ product.min_quantity }}"
-                                  quantity-min="{{ product.min_quantity }}"
-                                  quantity-max="{{ product.max_quantity }}">
-                    Add to Cart
-                </ngcart-addtocart>
+                <div id="productsDescription">
+                <h4>{{wine.name}}</h4>
+                <span>Код товара: U22794</span>
+                <p>{{wine.price | currency: '₴ '}} грн.</p>
+                </div>
+
+                <div id="productsAddToCartSection">
+                    <ngcart-addtocart id="{{ wine.id }}"
+                                      name="{{ wine.name }}"
+                                      price="{{ wine.price }}"
+                                      quantity="{{ wine.min_quantity }}"
+                                      quantity-min="{{ wine.min_quantity }}"
+                                      quantity-max="{{ wine.max_quantity }}">
+                        Add to Cart
+                    </ngcart-addtocart>
+                </div>
             </div>
-        </div>
-</div>
+    </div>
+</ui-view>

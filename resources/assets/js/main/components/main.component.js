@@ -5,21 +5,27 @@
  */
 module.exports = angular
     .module('mainModule.mainComponent', [])
+    .config(function($stateProvider, $urlRouterProvider){
+        $urlRouterProvider.otherwise('/');
+        var states = [
+            { name: 'home', url: '/', component: 'homeComponent'},
+            { name: 'about', url: '/about', component: 'aboutComponent'},
+            { name: 'products', url: '/products', component: 'productsComponent'},
+            { name: 'share', url: '/share', component: 'shareComponent'},
+            { name: 'vip', url: '/vip', component: 'vipComponent'},
+            { name: 'contacts', url: '/contacts', component: 'contactsComponent'},
+            { name: 'basket', url: '/basket', component: 'basketComponent'}
+        ];
+
+        // Loop over the state definitions and register them
+        states.forEach(function(state) {
+            $stateProvider.state(state);
+        });
+    })
     .component('appMain', {
         templateUrl: '/templates/main.template.html',
         controller: MainCtrl,
-        transclude: true,
-        $routeConfig:
-            [
-                {path: '/', name: 'Home', component: 'homeComponent', useAsDefault: true},
-                {path: '/about', name: 'About', component: 'aboutComponent'},
-                {path: '/products/...', name: 'Products', component: 'productsComponent'},
-                {path: '/share', name: 'Share', component: 'shareComponent'},
-                {path: '/vip', name: 'Vip', component: 'vipComponent'},
-                {path: '/contacts', name: 'Contacts', component: 'contactsComponent'},
-                {path: '/basket', name: 'Basket', component: 'basketComponent'},
-                {path: '**', component: 'homeComponent'}
-            ]
+        transclude: true
     });
 
     /**
@@ -36,12 +42,9 @@ module.exports = angular
         $ctrl.products = {};
 
         TraderService.getProducts().get().$promise.then(function(data) {
-            $ctrl.products = data.products;
+            $ctrl.wines = data.wines;
+            $ctrl.grocery = data.grocery;
         });
-
-        $ctrl.class = function(path) {
-            return (path == $location.path());
-        };
 
         $scope.basket = function () {
             $scope.showBasket = !ngCart.isEmpty();

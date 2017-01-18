@@ -1,10 +1,29 @@
 <div id="productsPageWrapper">
     <div class="productsNav">
-        <a ng-class="{'current-page-item': $ctrl.class('/products/wines')}"
-           class="col-md-6 productsLink" ng-link="['Wines']">Вина</a>
-        <a ng-class="{'current-page-item': $ctrl.class('/products/grocery')}"
-           class="col-md-6 productsLink" ng-link="['Grocery']">Продукты</a>
+        <a ui-sref="products.wines" ui-sref-active="current-page-item" class="col-md-6 col-sm-6">Вина</a>
+        <a ui-sref="products.grocery" ui-sref-active="current-page-item" class="col-md-6 col-sm-6">Продукты</a>
     </div>
 
-    <ng-outlet></ng-outlet>
+    <ui-view>
+        <div class="products col-md-2 col-sm-2" ng-repeat="wine in $ctrl.main.wines">
+            <img src="images/pic2.jpg" alt="" class="center-block"/>
+
+            <div id="productsDescription">
+                <h4>{{wine.name}}</h4>
+                <span>Код товара: U22794</span>
+                <p>{{wine.price | currency: '₴ '}} грн.</p>
+            </div>
+
+            <div id="productsAddToCartSection">
+                <ngcart-addtocart id="{{ wine.id }}"
+                                  name="{{ wine.name }}"
+                                  price="{{ wine.price }}"
+                                  quantity="{{ wine.min_quantity }}"
+                                  quantity-min="{{ wine.min_quantity }}"
+                                  quantity-max="{{ wine.max_quantity }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
+    </ui-view>
 </div>

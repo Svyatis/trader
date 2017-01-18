@@ -1,11 +1,11 @@
 <div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Продукты</span>
-        <a>Сыры</a>
-        <a>Макароны</a>
-        <a>Кофе</a>
-        <a>Оливковое масло</a>
-        <a>Икра</a>
+        <a ui-sref="products.grocery.cheese" ui-sref-active="current-page-item">Сыры</a>
+        <a ui-sref="products.grocery.macaroni" ui-sref-active="current-page-item">Макароны</a>
+        <a ui-sref="products.grocery.coffee" ui-sref-active="current-page-item">Кофе</a>
+        <a ui-sref="products.grocery.olive_oil" ui-sref-active="current-page-item">Оливковое масло</a>
+        <a ui-sref="products.grocery.caviar" ui-sref-active="current-page-item">Икра</a>
     </div>
 
     <div class="navBlock">
@@ -22,6 +22,28 @@
     </div>
 
 </div>
-<div class="col-md-9 col-sm-9">
-    <h2>Grocery page</h2>
-</div>
+
+<ui-view>
+    <div class="col-md-9 col-sm-9 productsComponent">
+        <div class="products col-md-3 col-sm-3" ng-repeat="groc in $ctrl.main.grocery">
+            <img src="images/pic2.jpg" alt="" class="center-block"/>
+
+            <div id="productsDescription">
+                <h4>{{groc.name}}</h4>
+                <span>Код товара: U22794</span>
+                <p>{{groc.price | currency: '₴ '}} грн.</p>
+            </div>
+
+            <div id="productsAddToCartSection">
+                <ngcart-addtocart id="{{ groc.id }}"
+                                  name="{{ groc.name }}"
+                                  price="{{ groc.price }}"
+                                  quantity="{{ groc.min_quantity }}"
+                                  quantity-min="{{ groc.min_quantity }}"
+                                  quantity-max="{{ groc.max_quantity }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
+    </div>
+</ui-view>

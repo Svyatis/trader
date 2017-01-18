@@ -5,26 +5,25 @@
  */
 module.exports = angular
     .module('mainModule.productsComponent', [])
+    .config(function($stateProvider) {
+        $stateProvider
+            .state('products.wines', { url: '/wines', component: 'productsWinesComponent' })
+            .state('products.grocery', { url: '/grocery', component: 'productsGroceryComponent' })
+    })
     .component('productsComponent', {
         templateUrl: '/templates/products.template.html',
         controller: ProductsCtrl,
         transclude: true,
-        $routeConfig:
-            [
-                {path: '/wines', name: 'Wines', component: 'productsWinesComponent', useAsDefault: true},
-                {path: '/grocery', name: 'Grocery', component: 'productsGroceryComponent'}
-            ]
+        require: {
+            main: '^appMain'
+        }
     });
 
 /**
  * @name ProductsCtrl
  * @param ngCart
- * @param $location
  * @memberOf mainModule
  */
-function ProductsCtrl(ngCart, $location) {
+function ProductsCtrl(ngCart) {
     var $ctrl = this;
-    $ctrl.class = function(path) {
-        return (path == $location.path());
-    };
 }

@@ -3,21 +3,14 @@
             <header class="col-md-12 col-sm-12 text-center">
                 <div class="col-md-2 col-sm-2" id="logo"></div>
                 <nav class="col-md-8 col-sm-8">
-                    <a ng-class="{'current-page-item': $ctrl.class('/')}"
-                        ng-link="['Home']" class="col-md-2 col-sm-2">Главная</a>
-                    <a ng-class="{'current-page-item': $ctrl.class('/about')}"
-                        ng-link="['About']" class="col-md-2 col-sm-2">О нас</a>
-                    <a ng-class="{'current-page-item': $ctrl.class('/products/wines')
-                                                    || $ctrl.class('/products/grocery')}"
-                        ng-link="['Products']" class="col-md-2 col-sm-2">Продукция</a>
-                    <a ng-class="{'current-page-item': $ctrl.class('/share')}"
-                       ng-link="['Share']" class="col-md-2 col-sm-2">Акции</a>
-                    <a ng-class="{'current-page-item': $ctrl.class('/vip')}"
-                       ng-link="['Vip']" class="col-md-2 col-sm-2">Отзывы</a>
-                    <a ng-class="{'current-page-item': $ctrl.class('/contacts')}"
-                       ng-link="['Contacts']" class="col-md-2 col-sm-2">Контакты</a>
+                    <a ui-sref="home" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">Главная</a>
+                    <a ui-sref="about" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">О нас</a>
+                    <a ui-sref="products" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">Продукция</a>
+                    <a ui-sref="share" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">Акции</a>
+                    <a ui-sref="vip" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">Отзывы</a>
+                    <a ui-sref="contacts" ui-sref-active="current-page-item" class="col-md-2 col-sm-2">Контакты</a>
                 </nav>
-                <a class="col-md-2 col-sm-2" id="basketFull" ng-hide="showBasket" ng-link="['Basket']">
+                <a class="col-md-2 col-sm-2" id="basketFull" ng-hide="showBasket" ui-sref="basket">
                         <svg version="1.1"  class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30px" height="30px" xml:space="preserve">
                             <path d="M27.715,10.48l-2.938,6.312c-0.082,0.264-0.477,0.968-1.318,0.968H11.831
                                 c-0.89,0-1.479-0.638-1.602-0.904l-2.048-6.524C7.629,8.514,8.715,7.933,9.462,7.933c0.748,0,14.915,0,16.805,0
@@ -32,7 +25,7 @@
                                 C25.395,21.21,25.027,21.575,24.576,21.575L24.576,21.575z"/>
                         </svg>
                     </a>
-                <a class="col-md-2 col-sm-2" id="basketEmpty" ng-show="showBasket" ng-link="['Basket']">
+                <a class="col-md-2 col-sm-2" id="basketEmpty" ng-show="showBasket" ui-sref="basket">
                     <ngcart-summary></ngcart-summary>
                 </a>
             </header>
@@ -40,7 +33,7 @@
 </div>
 
 <div class="container" id="main">
-    <ng-outlet></ng-outlet>
+    <ui-view></ui-view>
 </div>
 
 <div class="container" id="footerContainer">

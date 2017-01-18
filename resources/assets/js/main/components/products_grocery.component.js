@@ -5,15 +5,25 @@
  */
 module.exports = angular
     .module('mainModule.productsGroceryComponent', [])
+    .config(function($stateProvider) {
+        $stateProvider
+            .state('products.grocery.caviar', { url: '/caviar', component: 'productsGroceryCaviarComponent' })
+            .state('products.grocery.cheese', { url: '/cheese', component: 'productsGroceryCheeseComponent' })
+            .state('products.grocery.coffee', { url: '/coffee', component: 'productsGroceryCoffeeComponent' })
+            .state('products.grocery.macaroni', { url: '/macaroni', component: 'productsGroceryMacaroniComponent' })
+            .state('products.grocery.olive_oil', { url: '/olive_oil', component: 'productsGroceryOliveOilComponent' })
+    })
     .component('productsGroceryComponent', {
         templateUrl: '/templates/products_grocery.template.html',
-        controller: ProductsGroceryCtrl
+        controller: ProductsGroceryCtrl,
+        require: {
+            main: '^appMain'
+        }
     });
 
 /**
  * @name ProductsGroceryCtrl
  * @memberOf mainModule
  */
-function ProductsGroceryCtrl() {
-
+function ProductsGroceryCtrl(ngCart) {
 }

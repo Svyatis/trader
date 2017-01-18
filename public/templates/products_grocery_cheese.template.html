@@ -1,0 +1,23 @@
+<div class="text-center">Сыры</div>
+<div class="col-md-9 col-sm-9 productsComponent">
+    <div class="products col-md-3 col-sm-3" ng-repeat="che in $ctrl.main.grocery | filter: {type: 'cheese'}">
+        <img src="images/pic2.jpg" alt="" class="center-block"/>
+
+        <div id="productsDescription">
+            <h4>{{che.name}}</h4>
+            <span>Код товара: U22794</span>
+            <p>{{che.price | currency: '₴ '}} грн.</p>
+        </div>
+
+        <div id="productsAddToCartSection">
+            <ngcart-addtocart id="{{ che.id }}"
+                              name="{{ che.name }}"
+                              price="{{ che.price }}"
+                              quantity="{{ che.min_quantity }}"
+                              quantity-min="{{ che.min_quantity }}"
+                              quantity-max="{{ che.max_quantity }}">
+                Add to Cart
+            </ngcart-addtocart>
+        </div>
+    </div>
+</div>

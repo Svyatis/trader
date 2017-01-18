@@ -22,7 +22,6 @@ class ProductsController extends Controller
     public function index()
     {
         $products = $this->productsRepo->getProducts();
-        logger($products);
         return $products;
     }
     /**

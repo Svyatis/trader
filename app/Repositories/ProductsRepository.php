@@ -8,20 +8,24 @@
 
 namespace App\Repositories;
 
-use App\Entities\Products;
+use App\Entities\Wines;
+use App\Entities\Grocery;
 
 class ProductsRepository
 {
-    private $products;
+    private $wines;
+    private $grocery;
 
-    public function __construct(Products $products)
+    public function __construct(Wines $wines, Grocery $grocery)
     {
-        $this->products = $products;
+        $this->wines = $wines;
+        $this->grocery = $grocery;
     }
 
     public function getProducts() {
         try {
-            $products = $this->products->all();
+            $wines = $this->wines->all();
+            $grocery = $this->grocery->all();
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
@@ -29,7 +33,8 @@ class ProductsRepository
             ]);
         }
         return response()->json([
-            'products' => $products,
+            'wines' => $wines,
+            'grocery' => $grocery,
             'status' => 200
         ]);
     }

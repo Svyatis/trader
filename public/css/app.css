@@ -7829,15 +7829,15 @@ nav a {
 }
 
 nav a:hover, nav a:active, nav a:focus, nav a:visited {
-  background: -webkit-linear-gradient(left, black, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), black);
-  background: linear-gradient(to right, black, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), black);
+  background: -webkit-linear-gradient(left, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
+  background: linear-gradient(to right, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
   color: #fff;
   text-decoration: none;
 }
 
 .current-page-item {
-  background: -webkit-linear-gradient(left, black, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), black);
-  background: linear-gradient(to right, black, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), black);
+  background: -webkit-linear-gradient(left, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
+  background: linear-gradient(to right, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
   color: #fff;
 }
 
@@ -7956,10 +7956,11 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
   color: #fff;
 }
 
-.navBlock a:hover, .navBlock a:focus {
+.navBlock a:hover, .navBlock a:focus, .navBlock a:active {
   background: -webkit-linear-gradient(left, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
   background: linear-gradient(to right, transparent, rgba(230, 0, 0, 0.3), rgba(230, 0, 0, 0.3), transparent);
   color: #fff;
+  text-decoration: none;
 }
 
 .winesNavHeader {
@@ -8110,7 +8111,7 @@ sup {
 }
 
 #facebook {
-  background: transparent url("/images/facebook_icon_black.png") no-repeat;
+  background: transparent url("/images/facebook_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
@@ -8120,7 +8121,7 @@ sup {
 }
 
 #vk {
-  background: transparent url("/images/vk_icon_black.png") no-repeat;
+  background: transparent url("/images/vk_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
@@ -8130,7 +8131,7 @@ sup {
 }
 
 #youtube {
-  background: transparent url("/images/youtube_icon_black.png") no-repeat;
+  background: transparent url("/images/youtube_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
@@ -8140,7 +8141,7 @@ sup {
 }
 
 #twitter {
-  background: transparent url("/images/twitter_icon_black.png") no-repeat;
+  background: transparent url("/images/twitter_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
@@ -8150,7 +8151,7 @@ sup {
 }
 
 #picasso {
-  background: transparent url("/images/picasso_icon_black.png") no-repeat;
+  background: transparent url("/images/picasso_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
@@ -8160,7 +8161,7 @@ sup {
 }
 
 #googlePlus {
-  background: transparent url("/images/google_plus_icon_black.png") no-repeat;
+  background: transparent url("/images/google_plus_icon_white.png") no-repeat;
   background-size: 100%;
 }
 
