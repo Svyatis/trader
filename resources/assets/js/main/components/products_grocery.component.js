@@ -12,6 +12,7 @@ module.exports = angular
             .state('products.grocery.coffee', { url: '/coffee', component: 'productsGroceryCoffeeComponent' })
             .state('products.grocery.macaroni', { url: '/macaroni', component: 'productsGroceryMacaroniComponent' })
             .state('products.grocery.olive_oil', { url: '/olive_oil', component: 'productsGroceryOliveOilComponent' })
+            // .state('products.grocery.detailed', {url: '/:id', component: 'detailedComponent'})
     })
     .component('productsGroceryComponent', {
         templateUrl: '/templates/products_grocery.template.html',

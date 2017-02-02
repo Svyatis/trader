@@ -3,6 +3,10 @@ require('angular-ui-router');
 require('angular-resource');
 require('ngCart/dist/ngCart');
 require('angular-ui-bootstrap');
+require('angular-cookies');
+require('angular-xeditable');
+require('angular-file-upload');
+require('ng-file-upload');
 require('./main/main.module.js');
 
 window._ = require('lodash');

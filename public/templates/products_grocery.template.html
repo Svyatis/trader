@@ -18,23 +18,25 @@
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Фильтры</span>
         <h4>Фильтровать по цене:</h4>
-        <input title="min-price" type="number" min="0" value="0">
+        <slider-easy value="val" option="option"></slider-easy>
+        <span>{{ val }}</span>
     </div>
 
 </div>
 
 <ui-view>
     <div class="col-md-9 col-sm-9 productsComponent">
-        <div class="products col-md-3 col-sm-3" ng-repeat="groc in $ctrl.main.grocery">
-            <img src="images/pic2.jpg" alt="" class="center-block"/>
+        <div class="products col-md-3 col-sm-3" ng-repeat="groc in $ctrl.main.groceries">
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + groc.id}}" alt="" class="center-block"
+                 ui-sref="products.detailed({id: groc.id})"/>
 
-            <div id="productsDescription">
+            <div class="productsDescription" ui-sref="products.detailed({id: groc.id})">
                 <h4>{{groc.name}}</h4>
                 <span>Код товара: U22794</span>
                 <p>{{groc.price | currency: '₴ '}} грн.</p>
             </div>
 
-            <div id="productsAddToCartSection">
+            <div class="productsAddToCartSection">
                 <ngcart-addtocart id="{{ groc.id }}"
                                   name="{{ groc.name }}"
                                   price="{{ groc.price }}"

@@ -18,4 +18,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 Route::get('/products', 'ProductsController@index');
-Route::get('/grocery', 'GroceryController@index');
+Route::get('/get_product/{id}', 'ProductsController@getProduct');
+Route::get('/get_image/{id}', 'ProductsController@getImage');
+Route::post('/save_product', 'ProductsController@store');
+Route::post('/update_product/{id}', 'ProductsController@update');
+Route::get('/delete_product/{id}', 'ProductsController@destroy');

@@ -9,7 +9,8 @@ module.exports = angular
         $stateProvider
             .state('products.wines.sparkling', { url: '/sparkling', component: 'productsWinesSparklingComponent' })
             .state('products.wines.dry', { url: '/dry', component: 'productsWinesDryComponent' })
-            .state('products.wines.sweet', { url: '/sweet', component: 'productsWinesSweetComponent' })
+            .state('products.wines.semisweet', { url: '/semisweet', component: 'productsWinesSemisweetComponent' })
+            // .state('products.wines.detailed', { url: '/:id', component: 'detailedComponent'})
     })
     .component('productsWinesComponent', {
         templateUrl: '/templates/products_wines.template.html',

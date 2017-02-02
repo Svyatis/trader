@@ -5,7 +5,8 @@
  */
 module.exports = angular
     .module('mainModule.traderService', ['ngResource'])
-    .service('TraderService', TraderService);
+    .service('TraderService', TraderService)
+    .directive('validFile', validFile);
 
 /**
  * @name TraderService
@@ -24,20 +25,21 @@ function TraderService($resource, API_URL) {
     };
 
     /**
-     * @name function getGrocery
-     * @desc sends request for all grocery
-     */
-    this.getGrocery = function() {
-        return $resource(API_URL + 'grocery')
-    };
-
-    /**
      * @name function getContacts
      * @desc get one contact by id
      * @param id
      */
-    this.getDetail = function(id) {
-        return $resource(API_URL + 'contact/' + id);
+    this.getDetailedProduct = function(id) {
+        return $resource(API_URL + 'get_product/' + id);
+    };
+
+    /**
+     * @name function getPhoto
+     * @desc get getPhoto by id
+     * @param id
+     */
+    this.getImage = function(id) {
+        return $resource(API_URL + 'get_image/' + id);
     };
 
     /**
@@ -45,8 +47,8 @@ function TraderService($resource, API_URL) {
      * @desc create new contact
      * @param params
      */
-    this.sendContact = function(params) {
-        return $resource(API_URL + 'add-contact', params, {post: {method: "POST"}})
+    this.saveProduct = function(params) {
+        return $resource(API_URL + 'save_product/', params, {post: {method: "POST"}})
     };
 
     /**
@@ -55,7 +57,31 @@ function TraderService($resource, API_URL) {
      * @param params
      * @param id
      */
-    this.updateContact = function(params, id) {
-        return $resource(API_URL + 'update-contact/' + id, params, {post: {method: "POST"}})
+    this.updateProduct = function(params, id) {
+        return $resource(API_URL + 'update_product/' + id, params, {update: {method: "POST"}})
+    };
+
+    /**
+     * @name function deleteProduct
+     * @desc update contact
+     * @param id
+     */
+    this.deleteProduct = function(id) {
+        return $resource(API_URL + 'delete_product/' + id)
+    }
+}
+
+function validFile(){
+    return {
+        require:'ngModel',
+        link:function(scope,el,attrs,ngModel){
+            //change event is fired when file is selected
+            el.bind('change',function(){
+                scope.$apply(function(){
+                    ngModel.$setViewValue(el.val());
+                    ngModel.$render();
+                })
+            })
+        }
     }
 }

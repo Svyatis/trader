@@ -1,0 +1,28 @@
+<div>
+    <table>
+        <tr>
+            <td>Photo:</td>
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + $ctrl.product.id}}" alt="No picture"/>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{$ctrl.product.name}}</td>
+        </tr>
+        <tr>
+            <td>Price:</td>
+            <td>{{$ctrl.product.price}}</td>
+        </tr>
+        <tr>
+            <td>Min quantity:</td>
+            <td>{{$ctrl.product.min_quantity}}</td>
+        </tr>
+        <tr>
+            <td>Max quantity:</td>
+            <td>{{$ctrl.product.max_quantity}}</td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>{{$ctrl.product.type}}</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,386 @@
+<hr/>
+<div>
+
+    <a style="margin-left: 45%; font-size: 25px;"><span>Вина</span></a>
+
+    <a data-toggle="modal"
+       data-target="#submit_request"
+       id="myModalShow"
+       class="btn btn-success btn-sm pull-right"
+       style="width: 200px">
+        <span>Добавити товар</span>
+    </a>
+
+</div><hr/>
+
+<table>
+    <thead>
+        <tr style="border: 1px solid green">
+            <th style="border: 1px solid green; color:green; text-align: center">ІД</th>
+            <th style="border: 1px solid green; color:green; text-align: center">Назва</th>
+            <th style="border: 1px solid green; color:green; text-align: center">Ціна</th>
+            <th style="border: 1px solid green; color:green; text-align: center">Мін. кількість</th>
+            <th style="border: 1px solid green; color:green; text-align: center">Макс. кількість</th>
+            <th style="border: 1px solid green; color:green; text-align: center">Тип</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="wine in $ctrl.wines" style="border: 1px solid green">
+            <td style="width: 30px; color:green">{{wine.id}}</td>
+            <td style="width: 530px"><a editable-text="wine.name" e-style="width: 530px">
+                {{wine.name}}</a></td>
+            <td style="width: 90px"><a editable-text="wine.price" e-style="width: 90px">
+                {{wine.price}}</a></td>
+            <td style="width: 110px"><a editable-text="wine.min_quantity" e-style="width: 110px">
+                {{wine.min_quantity}}</a></td>
+            <td style="width: 110px"><a editable-text="wine.max_quantity" e-style="width: 110px">
+                {{wine.max_quantity}}</a></td>
+            <td style="width: 80px"><a editable-text="wine.type" e-style="width: 80px">
+                {{wine.type}}</a></td>
+            <td><input type="button" ng-click="$ctrl.editModal(wine.id,
+                                                            wine.name,
+                                                            wine.price,
+                                                            wine.min_quantity,
+                                                            wine.max_quantity,
+                                                            wine.type,
+                                                            wine.photo)"
+                       value="Редагувати"
+                       data-toggle="modal"
+                       data-target="#edit_request"
+                       id="myEditModalWinesShow"/>
+                <input type="button" ng-click="$ctrl.delete(wine.id)" value="Видалити" /></td>
+        </tr>
+    </tbody>
+</table>
+
+<hr/>
+<h1 style="text-align: center">Продукти</h1>
+<hr/>
+
+<table>
+    <thead>
+    <tr style="border: 1px solid green">
+        <th style="border: 1px solid green; color:red; text-align: center">ІД</th>
+        <th style="border: 1px solid green; color:red; text-align: center">Назва</th>
+        <th style="border: 1px solid green; color:red; text-align: center">Ціна</th>
+        <th style="border: 1px solid green; color:red; text-align: center">Мін. кількість</th>
+        <th style="border: 1px solid green; color:red; text-align: center">Макс. кількість</th>
+        <th style="border: 1px solid green; color:red; text-align: center">Тип</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="groc in $ctrl.groceries">
+        <td><input type="text" value="{{groc.id}}" style="width: 30px" title="id"/></td>
+        <td><input type="text" value="{{groc.name}}" style="width: 550px" title="name"/></td>
+        <td><input type="text" value="{{groc.price}}" style="width: 80px" title="price"/></td>
+        <td><input type="text" value="{{groc.min_quantity}}" style="width: 100px" title="min_q"/></td>
+        <td><input type="text" value="{{groc.max_quantity}}" style="width: 110px" title="max_q"/></td>
+        <td><input type="text" value="{{groc.type}}" style="width: 80px" title="type"/></td>
+        <td><input type="button" ng-click="$ctrl.editModal(groc.id,
+                                                            groc.name,
+                                                            groc.price,
+                                                            groc.min_quantity,
+                                                            groc.max_quantity,
+                                                            groc.type,
+                                                            groc.photo)"
+                   value="Редагувати"
+                   data-toggle="modal"
+                   data-target="#edit_request"
+                   id="myEditModalGroceryShow"/>
+            <input type="button" ng-click="$ctrl.delete(groc.id)" value="Видалити" /></td>
+    </tr>
+    </tbody>
+</table>
+
+<!--MODAL WINDOW OPENED WITH BUTTON "Add"-->
+<div class="modal fade" id="submit_request" role="dialog">
+    <div class="modal-dialog">
+        <!----------------- MODAL WINDOW CONTENT---------------->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    Добавити товар
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <form name="requestTraining" id="saveForm">
+
+                    <div class="form-group">
+
+                        Зображення:
+                        <input type="file" ngf-select ng-model="picFile" name="file"
+                               id="file"
+                               accept="image/*" ngf-max-size="20MB" required
+                               ngf-model-invalid="errorFile">
+                        <i ng-show="requestTraining.file.$error.required">*required</i><br>
+                        <img ng-show="requestTraining.file.$valid" ngf-thumbnail="picFile" class="thumb">
+                        <br>
+                        <span ng-show="picFile.result">Upload Successful</span>
+                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
+                    </div><br/>
+
+                    <div class="form-group">
+                        <label for="select_name">
+                            Назва товару
+                        </label>
+                        <input type="text" name="select_name"
+                               ng-model="$ctrl.select_name"
+                               id="select_name"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="requestTraining.select_name.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="requestTraining.select_name.$error.required">
+                            Будь ласка введіть назву товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="select_price">
+                            Ціна товару
+                        </label>
+                        <input type="text" name="select_price"
+                               ng-model="$ctrl.select_price"
+                               id="select_price"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="requestTraining.select_price.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="requestTraining.select_price.$error.required">
+                            Будь ласка введіть ціну товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="select_min_quantity">
+                            Мінімальна кількість замовлення товару
+                        </label>
+                        <input type="text" name="select_min_quantity"
+                               ng-model="$ctrl.select_min_quantity"
+                               id="select_min_quantity"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="requestTraining.select_min_quantity.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="requestTraining.select_min_quantity.$error.required">
+                            Будь ласка введіть мінімальну кількість замовлення товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="select_max_quantity">
+                            Максимальна кількість замовлення товару
+                        </label>
+                        <input type="text" name="select_max_quantity"
+                               ng-model="$ctrl.select_max_quantity"
+                               id="select_max_quantity"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="requestTraining.select_max_quantity.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="requestTraining.select_max_quantity.$error.required">
+                            Будь ласка введіть максимальну кількість замовлення товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="select_type">
+                            Тип товару
+                        </label>
+                        <select type="select" name="select_type"
+                                ng-model="$ctrl.select_type"
+                                id="select_type"
+                                class="form-control"
+                                required>
+                            <option ng-repeat="type in $ctrl.types">{{type}}</option>
+                        </select>
+                    </div>
+
+                    <div ng-show="requestTraining.select_type.$touched">
+                        <span class="alert-request-error alert-info"
+                             ng-show="requestTraining.select_type.$error.required">
+                            Будь ласка оберіть тип товару
+                        </span>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-info btn-sm"
+                        data-dismiss="modal"
+                        ng-click="$ctrl.cancelModal()">
+                    Cancel
+                </button>
+                <input  type="submit"
+                        class="btn btn-primary btn-sm"
+                        value="Submit"
+                        data-dismiss="modal"
+                        ng-disabled="requestTraining.$invalid"
+                        ng-click="$ctrl.save(picFile)">
+            </div>
+
+        </div>
+    </div>
+</div><!--END OF THE MODAL WINDOW OPENED WITH BUTTON "JOIN"-->
+
+<!--MODAL WINDOW OPENED WITH BUTTON "Edit"-->
+<div class="modal fade" id="edit_request" role="dialog">
+    <div class="modal-dialog">
+        <!----------------- MODAL WINDOW CONTENT---------------->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4 class="modal-title">
+                    Обновити товар
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <form name="editProduct">
+
+                    <div class="form-group">
+
+                        Зображення:
+                        <input type="file" ngf-select ng-model="$ctrl.file" name="file"
+                               accept="image/*" ngf-max-size="20MB" required
+                               ngf-model-invalid="errorFile">
+                        <img ng-show="editProduct.file.$valid" ngf-thumbnail="$ctrl.file" class="thumb">
+                        <div ng-show="editProduct.edit_name.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.file.$error.required">
+                            Будь ласка введіть назву товару
+                        </span>
+                        </div><br>
+
+                    </div><br/>
+
+                    <div class="form-group">
+                        <label for="edit_name">
+                            Назва товару
+                        </label>
+                        <input type="text" name="edit_name"
+                               ng-model="$ctrl.edit_name"
+                               id="edit_name"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="editProduct.edit_name.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.edit_name.$error.required">
+                            Будь ласка введіть назву товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="edit_price">
+                            Ціна товару
+                        </label>
+                        <input type="text" name="edit_price"
+                               ng-model="$ctrl.edit_price"
+                               id="edit_price"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="editProduct.edit_price.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.edit_price.$error.required">
+                            Будь ласка введіть ціну товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="edit_min_quantity">
+                            Мінімальна кількість замовлення товару
+                        </label>
+                        <input type="text" name="edit_min_quantity"
+                               ng-model="$ctrl.edit_min_quantity"
+                               id="edit_min_quantity"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="editProduct.edit_min_quantity.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.edit_min_quantity.$error.required">
+                            Будь ласка введіть мінімальну кількість замовлення товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="edit_max_quantity">
+                            Максимальна кількість замовлення товару
+                        </label>
+                        <input type="text" name="edit_max_quantity"
+                               ng-model="$ctrl.edit_max_quantity"
+                               id="edit_max_quantity"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="editProduct.edit_max_quantity.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.edit_max_quantity.$error.required">
+                            Будь ласка введіть максимальну кількість замовлення товару
+                        </span>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="edit_type">
+                            Тип товару
+                        </label>
+                        <input type="text" name="edit_type"
+                               ng-model="$ctrl.edit_type"
+                               id="edit_type"
+                               class="form-control"
+                               required />
+                    </div>
+
+                    <div ng-show="editProduct.edit_type.$touched">
+                        <span class="alert-request-error alert-info"
+                              ng-show="editProduct.edit_type.$error.required">
+                            Будь ласка оберіть тип товару
+                        </span>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-info btn-sm"
+                        data-dismiss="modal"
+                        ng-click="$ctrl.cancelModal()">
+                    Cancel
+                </button>
+                <input  type="submit"
+                        class="btn btn-primary btn-sm"
+                        value="Submit"
+                        data-dismiss="modal"
+                        ng-disabled="editProduct.$invalid"
+                        ng-click="$ctrl.update($ctrl.file)">
+            </div>
+
+        </div>
+    </div>
+</div><!--END OF THE MODAL WINDOW OPENED WITH BUTTON "JOIN"-->

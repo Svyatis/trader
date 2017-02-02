@@ -1,15 +1,16 @@
 <div class="text-center">Оливковое масло</div>
 <div class="col-md-9 col-sm-9 productsComponent">
-    <div class="products col-md-3 col-sm-3" ng-repeat="oil in $ctrl.main.grocery | filter: {type: 'olive oil'}">
-        <img src="images/pic2.jpg" alt="" class="center-block"/>
+    <div class="products col-md-3 col-sm-3" ng-repeat="oil in $ctrl.main.groceries | filter: {type: 'olive oil'}">
+        <img ng-src="{{$ctrl.main.path + 'get_image/' + oil.id}}" alt="" class="center-block"
+             ui-sref="products.detailed({id: oil.id})"/>
 
-        <div id="productsDescription">
+        <div class="productsDescription" ui-sref="products.detailed({id: oil.id})">
             <h4>{{oil.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{oil.price | currency: '₴ '}} грн.</p>
         </div>
 
-        <div id="productsAddToCartSection">
+        <div class="productsAddToCartSection">
             <ngcart-addtocart id="{{ oil.id }}"
                               name="{{ oil.name }}"
                               price="{{ oil.price }}"

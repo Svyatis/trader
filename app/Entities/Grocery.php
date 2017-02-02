@@ -12,6 +12,7 @@ class Grocery extends Model
      * @var string
      */
     protected $table = 'grocery';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,6 @@ class Grocery extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'min_quantity', 'max_quantity', 'type',
+        'name', 'price', 'min_quantity', 'max_quantity', 'type', 'photo',
     ];
 }

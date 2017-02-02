@@ -14,7 +14,9 @@ module.exports = angular
             { name: 'share', url: '/share', component: 'shareComponent'},
             { name: 'vip', url: '/vip', component: 'vipComponent'},
             { name: 'contacts', url: '/contacts', component: 'contactsComponent'},
-            { name: 'basket', url: '/basket', component: 'basketComponent'}
+            { name: 'basket', url: '/basket', component: 'basketComponent'},
+            { name: 'admin', url: '/admin', component: 'adminComponent'},
+            { name: 'login', url: '/login', component: 'loginComponent'}
         ];
 
         // Loop over the state definitions and register them
@@ -34,16 +36,18 @@ module.exports = angular
      * @param $scope
      * @param $timeout
      * @param $location
+     * @param API_URL
      * @param TraderService
      * @memberOf mainModule
      */
-    function MainCtrl($scope, $location, ngCart, $timeout, TraderService) {
+    function MainCtrl($scope, $location, ngCart, $timeout, TraderService, API_URL) {
         var $ctrl = this;
         $ctrl.products = {};
+        $ctrl.path = API_URL;
 
         TraderService.getProducts().get().$promise.then(function(data) {
             $ctrl.wines = data.wines;
-            $ctrl.grocery = data.grocery;
+            $ctrl.groceries = data.groceries;
         });
 
         $scope.basket = function () {

@@ -1,26 +1,50 @@
 <div id="productsPageWrapper">
     <div class="productsNav">
-        <a ui-sref="products.wines" ui-sref-active="current-page-item" class="col-md-6 col-sm-6">Вина</a>
-        <a ui-sref="products.grocery" ui-sref-active="current-page-item" class="col-md-6 col-sm-6">Продукты</a>
+        <a ui-sref="products.wines" ui-sref-active="current-page-item"
+           class="col-md-6 col-sm-6">Вина</a>
+        <a ui-sref="products.grocery" ui-sref-active="current-page-item"
+           class="col-md-6 col-sm-6">Продукты</a>
     </div>
 
     <ui-view>
         <div class="products col-md-2 col-sm-2" ng-repeat="wine in $ctrl.main.wines">
-            <img src="images/pic2.jpg" alt="" class="center-block"/>
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + wine.id}}" alt=""
+                 class="center-block" ui-sref="products.detailed({id: wine.id})"/>
 
-            <div id="productsDescription">
+            <div class="productsDescription" ui-sref="products.detailed({id: wine.id})">
                 <h4>{{wine.name}}</h4>
                 <span>Код товара: U22794</span>
                 <p>{{wine.price | currency: '₴ '}} грн.</p>
             </div>
 
-            <div id="productsAddToCartSection">
+            <div class="productsAddToCartSection">
                 <ngcart-addtocart id="{{ wine.id }}"
                                   name="{{ wine.name }}"
                                   price="{{ wine.price }}"
                                   quantity="{{ wine.min_quantity }}"
                                   quantity-min="{{ wine.min_quantity }}"
                                   quantity-max="{{ wine.max_quantity }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
+        <div class="products col-md-2 col-sm-2" ng-repeat="groc in $ctrl.main.groceries">
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + groc.id}}" alt="" class="center-block"
+                 ui-sref="products.detailed({id: groc.id})"/>
+
+            <div class="productsDescription" ui-sref="products.detailed({id: groc.id})">
+                <h4>{{groc.name}}</h4>
+                <span>Код товара: U22794</span>
+                <p>{{groc.price | currency: '₴ '}} грн.</p>
+            </div>
+
+            <div class="productsAddToCartSection">
+                <ngcart-addtocart id="{{ groc.id }}"
+                                  name="{{ groc.name }}"
+                                  price="{{ groc.price }}"
+                                  quantity="{{ groc.min_quantity }}"
+                                  quantity-min="{{ groc.min_quantity }}"
+                                  quantity-max="{{ groc.max_quantity }}">
                     Add to Cart
                 </ngcart-addtocart>
             </div>

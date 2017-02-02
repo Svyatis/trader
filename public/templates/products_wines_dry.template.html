@@ -1,15 +1,16 @@
 <div class="text-center">Сухие вина</div>
 <div class="col-md-9 col-sm-9 productsComponent">
     <div class="products col-md-3 col-sm-3" ng-repeat="wine in $ctrl.main.wines | filter: {type: 'dry'}">
-        <img src="images/pic2.jpg" alt="" class="center-block"/>
+        <img ng-src="{{$ctrl.main.path + 'get_image/' + wine.id}}" alt="" class="center-block"
+             ui-sref="products.detailed({id: wine.id})"/>
 
-        <div id="productsDescription">
+        <div class="productsDescription" ui-sref="products.detailed({id: wine.id})">
             <h4>{{wine.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{wine.price | currency: '₴ '}} грн.</p>
         </div>
 
-        <div id="productsAddToCartSection">
+        <div class="productsAddToCartSection">
             <ngcart-addtocart id="{{ wine.id }}"
                               name="{{ wine.name }}"
                               price="{{ wine.price }}"

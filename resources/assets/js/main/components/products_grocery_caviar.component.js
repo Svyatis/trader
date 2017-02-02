@@ -17,5 +17,9 @@ module.exports = angular
  * @name ProductsGroceryCaviarCtrl
  * @memberOf mainModule
  */
-function ProductsGroceryCaviarCtrl(ngCart) {
+function ProductsGroceryCaviarCtrl(ngCart, $state) {
+    var $ctrl = this;
+    $ctrl.go = function(id) {
+        $state.go('products.grocery.detailed', {id: id});
+    }
 }

@@ -7702,6 +7702,22 @@ article, aside, details, figcaption, figure, footer, header, menu, nav, section 
   display: block;
 }
 
+.form-group {
+  margin: 0;
+}
+
+.alert-info, .alert-danger, .alert-warning, .alert-success {
+  background-color: transparent;
+}
+
+canvas {
+  background-color: #f3f3f3;
+  box-shadow: 3px 3px 3px 0 #e3e3e3;
+  border: 1px solid #c3c3c3;
+  height: 100px;
+  margin: 6px 0 0 6px;
+}
+
 ol, ul {
   list-style: none;
 }
@@ -7709,6 +7725,16 @@ ol, ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+input[type=file] {
+  background-color: transparent;
+  border-color: rgba(1, 104, 21, 0.6);
+}
+
+.thumb {
+  width: 100px;
+  height: 100px;
 }
 
 /* Basic */
@@ -7993,16 +8019,19 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 .products img {
+  margin: 0 auto;
   height: 190px;
+  max-width: 200px;
   padding-top: 5px;
 }
 
-#productsDescription {
-  padding: 5px 0 0 10px;
-  height: 90px;
+.productsDescription {
+  text-align: center;
+  padding: 0 5px 0 5px;
+  height: 100px;
 }
 
-#productsAddToCartSection {
+.productsAddToCartSection {
   padding-top: 3px;
   height: 45px;
 }

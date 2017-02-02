@@ -1,15 +1,16 @@
 <div class="text-center">Кофе</div>
 <div class="col-md-9 col-sm-9 productsComponent">
-    <div class="products col-md-3 col-sm-3" ng-repeat="coff in $ctrl.main.grocery | filter: {type: 'coffee'}">
-        <img src="images/pic2.jpg" alt="" class="center-block"/>
+    <div class="products col-md-3 col-sm-3" ng-repeat="coff in $ctrl.main.groceries | filter: {type: 'coffee'}">
+        <img ng-src="{{$ctrl.main.path + 'get_image/' + coff.id}}" alt="" class="center-block"
+             ui-sref="products.detailed({id: coff.id})"/>
 
-        <div id="productsDescription">
+        <div class="productsDescription" ui-sref="products.detailed({id: coff.id})">
             <h4>{{coff.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{coff.price | currency: '₴ '}} грн.</p>
         </div>
 
-        <div id="productsAddToCartSection">
+        <div class="productsAddToCartSection">
             <ngcart-addtocart id="{{ coff.id }}"
                               name="{{ coff.name }}"
                               price="{{ coff.price }}"

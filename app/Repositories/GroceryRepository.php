@@ -1,0 +1,129 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Entities\Grocery;
+
+class GroceryRepository
+{
+    private $model;
+
+    /**
+     * Constructor
+     * @param $grocery
+     */
+    public function __construct(Grocery $grocery)
+    {
+        $this->model = $grocery;
+    }
+
+    /**
+     * Return all products.
+     * @return mixed
+     */
+    public function getProducts() {
+        try {
+            $grocery = $this->model->all();
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+                'status' => 500
+            ]);
+        }
+        return $grocery;
+    }
+
+    public function getType() {
+        $type = $this->model->select('type')->distinct()->get();
+        return $type;
+    }
+
+    /**
+     * Display template images.
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getImage($id) {
+        return $this->model->find($id);
+    }
+
+    /**
+     * Return one product by id
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getProduct($id) {
+        if($product = $this->model->find($id)) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'OK',
+                'product' => $product
+            ]);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Failed'
+        ]);
+    }
+
+    /**
+     * Save product.
+     * @param $attributes
+     * @return \Illuminate\Http\Response
+     */
+    public function saveProduct($attributes) {
+        $grocery = $this->model->create($attributes);
+        $crt = $grocery->save();
+        if($crt) {
+            return response()->json([
+                'status' => 200
+            ]);
+        }
+        return response()->json([
+            'status' => 500
+        ]);
+    }
+
+    /**
+     * Update product.
+     * @param  int  $id
+     * @param  int  $data
+     * @return \Illuminate\Http\Response
+     */
+    public function updateProduct($id, $data) {
+        $product = $this->model->find($id);
+        $upd = $product->update($data);
+        if($upd == true) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Product updated'
+            ]);
+        }
+        return response()->json([
+            'status' => 500,
+            'message' => 'Failed to update product, please try again later'
+        ]);
+    }
+
+    /**
+     * Delete product.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function deleteProduct($id) {
+
+        $product = $this->model->find($id);
+        if($product != null) {
+            $product->delete();
+            return response()->json([
+                'status' => 200
+            ]);
+        }
+        else {
+            return response()->json([
+                'status' => 400
+            ]);
+        }
+    }
+}

@@ -1,11 +1,14 @@
 require('./components/main.component');
 require('./components/home.component');
+require('./components/login.component');
+require('./components/admin.component');
+require('./components/detailed.component.js');
 require('./components/about.component');
 require('./components/products.component');
 require('./components/products_wines.component');
 require('./components/products_wines_dry.component');
 require('./components/products_wines_sparkling.component');
-require('./components/products_wines_sweet.component');
+require('./components/products_wines_semisweet.component');
 require('./components/products_grocery.component');
 require('./components/products_grocery_caviar.component');
 require('./components/products_grocery_cheese.component');
@@ -16,18 +19,22 @@ require('./components/share.component');
 require('./components/vip.component');
 require('./components/contacts.component');
 require('./components/basket.component');
+require('./services/login.service');
 require('./services/trader.service');
 
 module.exports = angular.module("mainModule", [
     // components
     'mainModule.mainComponent',
     'mainModule.homeComponent',
+    'mainModule.loginComponent',
+    'mainModule.adminComponent',
+    'mainModule.detailedComponent',
     'mainModule.aboutComponent',
     'mainModule.productsComponent',
     'mainModule.productsWinesComponent',
     'mainModule.productsWinesDryComponent',
     'mainModule.productsWinesSparklingComponent',
-    'mainModule.productsWinesSweetComponent',
+    'mainModule.productsWinesSemisweetComponent',
     'mainModule.productsGroceryComponent',
     'mainModule.productsGroceryCaviarComponent',
     'mainModule.productsGroceryCheeseComponent',
@@ -39,5 +46,6 @@ module.exports = angular.module("mainModule", [
     'mainModule.contactsComponent',
     'mainModule.basketComponent',
     // services
+    'mainModule.loginService',
     'mainModule.traderService'
 ]);
