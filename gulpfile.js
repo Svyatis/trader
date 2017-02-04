@@ -13,6 +13,6 @@ const elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass(['app.scss', 'main.css'])
+    mix.sass(['app.scss', 'main.css', 'angular-slider-easy.css'])
        .webpack('app.js');
 });

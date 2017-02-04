@@ -37,18 +37,38 @@ module.exports = angular
      * @param $timeout
      * @param $location
      * @param API_URL
+     * @param shareData
      * @param TraderService
      * @memberOf mainModule
      */
-    function MainCtrl($scope, $location, ngCart, $timeout, TraderService, API_URL) {
+    function MainCtrl($scope, $location, ngCart, $timeout, TraderService, API_URL, shareData) {
         var $ctrl = this;
         $ctrl.products = {};
         $ctrl.path = API_URL;
 
-        TraderService.getProducts().get().$promise.then(function(data) {
-            $ctrl.wines = data.wines;
-            $ctrl.groceries = data.groceries;
-        });
+        function switchTypes(type) {
+            var types = [];
+            for(var i=0;i<type.length; i++) {
+                types[i] = type[i].type;
+            }
+            return types;
+        }
+
+        $ctrl.getAll = function() {
+            TraderService.getProducts().get().$promise.then(function(data) {
+                $ctrl.wines = data.wines;
+                $ctrl.groceries = data.groceries;
+                $ctrl.wineTypes = switchTypes(data.winesType);
+                $ctrl.groceriesTypes = switchTypes(data.groceriesType);
+                var types = $ctrl.wineTypes.concat($ctrl.groceriesTypes);
+                var pagination = data.fullArray;
+                shareData.addItem(data);
+                shareData.addItem(types);
+                shareData.addItem(pagination);
+            });
+        };
+        $ctrl.getAll();
+
 
         $scope.basket = function () {
             $scope.showBasket = !ngCart.isEmpty();

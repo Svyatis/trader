@@ -2,6 +2,8 @@ require('./components/main.component');
 require('./components/home.component');
 require('./components/login.component');
 require('./components/admin.component');
+require('./components/admin_wine.component');
+require('./components/admin_grocery.component');
 require('./components/detailed.component.js');
 require('./components/about.component');
 require('./components/products.component');
@@ -28,6 +30,8 @@ module.exports = angular.module("mainModule", [
     'mainModule.homeComponent',
     'mainModule.loginComponent',
     'mainModule.adminComponent',
+    'mainModule.adminWineComponent',
+    'mainModule.adminGroceryComponent',
     'mainModule.detailedComponent',
     'mainModule.aboutComponent',
     'mainModule.productsComponent',

@@ -39,7 +39,11 @@ class ProductsController extends Controller
         $groceries = $this->groceryRepo->getProducts();
         $winesType = $this->wineRepo->getType();
         $groceriesType = $this->groceryRepo->getType();
+        $a1 = json_decode( $wines, true );
+        $a2 = json_decode( $groceries, true );
+        $res = array_merge_recursive( $a1, $a2 );
         return response()->json([
+            'fullArray' => $res,
             'wines' => $wines,
             'groceries' => $groceries,
             'winesType' => $winesType,
@@ -96,6 +100,20 @@ class ProductsController extends Controller
         $this->changeModel($id);
         $product = $this->model->getProduct($id);
         return $product;
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function searchData(Request $request) {
+        $wineSearch = $this->wineRepo->searchData($request);
+        $grocerySearch = $this->groceryRepo->searchData($request);
+        $res = array_merge_recursive( $wineSearch, $grocerySearch );
+        return response()->json([
+            'status' => 200,
+            'res' => $res
+        ]);
     }
 
     /**

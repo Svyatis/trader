@@ -10,42 +10,65 @@
 
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Поиск</span>
-        <input type="text" id="searchField" name="search">
+        <input type="text" id="searchField" name="search"
+               ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)">
         <br><br>
-        <input type="submit" class="btn" id="searchButton" value="Поиск">
     </div>
 
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Фильтры</span>
-        <h4>Фильтровать по цене:</h4>
-        <slider-easy value="val" option="option"></slider-easy>
-        <span>{{ val }}</span>
+        <h4>Фильтровать по цене:</h4><br/>
+        <span>{{ val.start | currency: '$' }}</span> - <span>{{ val.end | currency: '$' }}</span>
+        <slider-easy value="val" option="option"></slider-easy><br/>
+        <input type="submit" class="btn" id="searchButton" value="Фильтровать" ng-click="$ctrl.filterPage(1)"/>
     </div>
 
 </div>
 
 <ui-view>
     <div class="col-md-9 col-sm-9 productsComponent">
-        <div class="products col-md-3 col-sm-3" ng-repeat="groc in $ctrl.main.groceries">
-            <img ng-src="{{$ctrl.main.path + 'get_image/' + groc.id}}" alt="" class="center-block"
-                 ui-sref="products.detailed({id: groc.id})"/>
+        <div class="products col-md-3 col-sm-3" ng-repeat="item in $ctrl.items">
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
+                 ui-sref="products.detailed({id: item.id})"/>
 
-            <div class="productsDescription" ui-sref="products.detailed({id: groc.id})">
-                <h4>{{groc.name}}</h4>
+            <div class="productsDescription" ui-sref="products.detailed({id: item.id})">
+                <h4>{{item.name}}</h4>
                 <span>Код товара: U22794</span>
-                <p>{{groc.price | currency: '₴ '}} грн.</p>
+                <p>{{item.price | currency: '₴ '}} грн.</p>
             </div>
 
             <div class="productsAddToCartSection">
-                <ngcart-addtocart id="{{ groc.id }}"
-                                  name="{{ groc.name }}"
-                                  price="{{ groc.price }}"
-                                  quantity="{{ groc.min_quantity }}"
-                                  quantity-min="{{ groc.min_quantity }}"
-                                  quantity-max="{{ groc.max_quantity }}">
+                <ngcart-addtocart id="{{ item.id }}"
+                                  name="{{ item.name }}"
+                                  price="{{ item.price }}"
+                                  quantity="{{ item.min_quantity }}"
+                                  quantity-min="{{ item.min_quantity }}"
+                                  quantity-max="{{ item.max_quantity }}">
                     Add to Cart
                 </ngcart-addtocart>
             </div>
         </div>
+    </div><br/>
+
+    <div class="text-center">
+        <!-- pager -->
+        <ul ng-if="$ctrl.pager.pages.length" class="pagination">
+            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+                <a ng-click="$ctrl.setPage(1)">First</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage - 1)">Previous</a>
+            </li>
+            <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
+                <a ng-click="$ctrl.setPage(page)">{{page}}</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage + 1)">Next</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.totalPages)">Last</a>
+            </li>
+        </ul>
     </div>
+
 </ui-view>

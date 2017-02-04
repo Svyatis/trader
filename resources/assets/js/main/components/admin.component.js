@@ -5,37 +5,35 @@
  */
 module.exports = angular
     .module('mainModule.adminComponent', [])
+    .config(function($stateProvider) {
+        $stateProvider
+            .state('admin.wines', { url: '/wines', component: 'adminWineComponent' })
+            .state('admin.grocery', { url: '/grocery', component: 'adminGroceryComponent' })
+    })
     .component('adminComponent', {
         templateUrl: '/templates/admin.template.html',
-        controller: AdminCtrl
+        controller: AdminCtrl,
+        transclude: true,
+        require: {
+            main: '^appMain'
+        }
     });
 
 /**
  * @name AdminCtrl
+ * @param TraderService
+ * @param $state
+ * @param API_URL
+ * @param Upload
+ * @param shareData
+ * @param $scope
  * @memberOf adminComponent
  */
-function AdminCtrl(TraderService, $state, API_URL, Upload) {
+function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
     var $ctrl = this;
-    $ctrl.types = [{'type': 'some'}, {'type1': 'other'}];
-
-    $ctrl.getAllProducts = function() {
-        TraderService.getProducts().get().$promise.then(function(data) {
-            $ctrl.wines = data.wines;
-            $ctrl.groceries = data.groceries;
-            $ctrl.wineTypes = switchTypes(data.winesType);
-            $ctrl.groceriesTypes = switchTypes(data.groceriesType);
-            $ctrl.types = $ctrl.wineTypes.concat($ctrl.groceriesTypes);
-        });
-    };
-    $ctrl.getAllProducts();
-
-    function switchTypes(type) {
-        var types = [];
-        for(var i=0;i<type.length; i++) {
-            types[i] = type[i].type;
-        }
-        return types;
-    }
+    $ctrl.data = shareData.getList();
+    console.log($ctrl.data);
+    $ctrl.types = $ctrl.data[1];
 
     $ctrl.save = function( file ) {
         file.upload = Upload.upload( {
@@ -55,8 +53,8 @@ function AdminCtrl(TraderService, $state, API_URL, Upload) {
         });
 
         file.upload.then( function ( response ) {
-            $ctrl.getAllProducts();
             $ctrl.cancelModal();
+            $ctrl.main.getAll();
         }, function ( response ) {
             if ( response.status > 0 )
                 logger.error( response )
@@ -92,8 +90,7 @@ function AdminCtrl(TraderService, $state, API_URL, Upload) {
         }
 
         file.upload.then( function ( response ) {
-            console.log(response);
-            $ctrl.getAllProducts();
+            $ctrl.main.getAll();
         }, function ( response ) {
             if ( response.status > 0 )
                 logger.error( response )
@@ -109,7 +106,6 @@ function AdminCtrl(TraderService, $state, API_URL, Upload) {
         $ctrl.edit_max_quantity = max_q;
         $ctrl.edit_type = type;
         $ctrl.file = API_URL + 'get_image/' + id;
-        console.log(id, name, price, min_q, max_q, type, $ctrl.file);
     };
 
     if(!(sessionStorage.LoggedIn == 'Yes')) {
@@ -117,21 +113,20 @@ function AdminCtrl(TraderService, $state, API_URL, Upload) {
     }
 
     $ctrl.cancelModal = function() {
-        $('#file').val('');
         $ctrl.file = null;
-        // $('#select_name').val('');
-        // $('#select_price').val('');
-        // $('#select_min_quantity').val('');
-        // $('#select_max_quantity').val('');
-        // $('#select_type').val('');
+        $('#imgSaveForm').val('');
+        $('#file').val('');
+        $('#select_name').val('');
+        $('#select_price').val('');
+        $('#select_min_quantity').val('');
+        $('#select_max_quantity').val('');
+        $('#select_type').val('');
     };
 
     $ctrl.delete = function(id) {
-        console.log(id);
         if(confirm('Ви дійсно хочете видалити цей продукт ?')) {
             TraderService.deleteProduct(id).get().$promise.then(function(response){
-                console.log(response);
-                $ctrl.getAllProducts();
+                $ctrl.main.getAll();
             });
         } else {
             console.log('Not confirmed');

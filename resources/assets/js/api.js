@@ -8,6 +8,9 @@ var app = angular.module('app',
         'xeditable',
         'angularFileUpload',
         'ngFileUpload',
+        'angular-slider-easy',
+        'ui-rangeSlider',
+        'angularUtils.directives.dirPagination',
         'mainModule'
     ])
     .config(function($locationProvider) {

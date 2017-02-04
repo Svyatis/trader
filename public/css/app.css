@@ -7710,14 +7710,6 @@ article, aside, details, figcaption, figure, footer, header, menu, nav, section 
   background-color: transparent;
 }
 
-canvas {
-  background-color: #f3f3f3;
-  box-shadow: 3px 3px 3px 0 #e3e3e3;
-  border: 1px solid #c3c3c3;
-  height: 100px;
-  margin: 6px 0 0 6px;
-}
-
 ol, ul {
   list-style: none;
 }
@@ -7732,9 +7724,59 @@ input[type=file] {
   border-color: rgba(1, 104, 21, 0.6);
 }
 
+.btn-success {
+  background-color: rgba(1, 104, 21, 0.6);
+  border-color: rgba(1, 104, 21, 0.6);
+}
+
+.pagination > li > a, .pagination > li > span {
+  color: white !important;
+  background-color: rgba(1, 104, 21, 0.6) !important;
+  border: none !important;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover {
+  color: rgba(1, 104, 21, 0.6) !important;
+  background-color: white !important;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  color: rgba(1, 104, 21, 0.6) !important;
+  background-color: white !important;
+}
+
+.disabled {
+  visibility: visible !important;
+}
+
 .thumb {
   width: 100px;
   height: 100px;
+}
+
+.navBlock slider-easy .slider .hint {
+  display: none !important;
+}
+
+slider-easy .slider {
+  padding-top: 0 !important;
+}
+
+slider-easy .slider .slider-track .slider-handle {
+  background-color: maroon !important;
+  opacity: 1 !important;
+}
+
+slider-easy .slider .slider-track .slider-selection {
+  background-image: none !important;
+  background-color: maroon;
+}
+
+slider-easy .slider .slider-track {
+  background-image: none !important;
+  background-color: black;
+  opacity: 0.6 !important;
 }
 
 /* Basic */
@@ -7957,8 +7999,8 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 .productsNavComponent {
-  width: 19.8%;
-  margin-right: 0.2%;
+  /*width: 19.8%;*/
+  /*margin-right: 0.2%;*/
   padding: 0;
 }
 
@@ -8000,7 +8042,6 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 .productsComponent {
-  width: 80%;
   padding: 0;
   background-color: transparent;
 }
@@ -8009,7 +8050,7 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
   display: inline-table;
   height: 300px;
   width: 24.8%;
-  margin: 0 0 2px 2px;
+  margin-bottom: 2px;
   background: -webkit-linear-gradient(left, transparent, black, black, black, black, black, black, transparent);
   background: linear-gradient(to right, transparent, black, black, black, black, black, black, transparent);
 }
@@ -8021,7 +8062,7 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 .products img {
   margin: 0 auto;
   height: 190px;
-  max-width: 200px;
+  width: 180px;
   padding-top: 5px;
 }
 
@@ -8210,6 +8251,93 @@ sup {
 
 #copyright a {
   color: #A6A88F;
+}
+
+slider-easy {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+slider-easy .slider {
+  padding-top: 90px;
+  display: block;
+  vertical-align: middle;
+  position: relative;
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+}
+
+slider-easy .slider .slider-track {
+  height: 10px;
+  width: 100%;
+  margin-top: -5px;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  cursor: pointer;
+  background-image: -webkit-linear-gradient(top, #e8e8e8, #f9f9f9);
+  background-image: linear-gradient(180deg, #e8e8e8, #f9f9f9);
+  border-radius: 4px;
+}
+
+slider-easy .slider .slider-track .slider-selection {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background-image: -webkit-linear-gradient(top, #80c8fe, #bfe3fe);
+  background-image: linear-gradient(180deg, #80c8fe, #bfe3fe);
+  background-repeat: repeat-x;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+slider-easy .slider .slider-track .slider-handle {
+  margin-left: -10px;
+  margin-top: -5px;
+  border-radius: 20px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #149bdf;
+  opacity: .8;
+}
+
+slider-easy .slider .hint {
+  top: 0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  visibility: visible;
+}
+
+slider-easy .slider .hint .hint-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-color: transparent;
+  border-top-color: #000;
+  border-width: 5px 5px 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+slider-easy .slider .hint .hint-inner {
+  white-space: nowrap;
+  max-width: 200px;
+  padding: 8px;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=app.css.map */

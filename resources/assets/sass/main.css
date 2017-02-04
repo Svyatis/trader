@@ -20,16 +20,6 @@ article, aside, details, figcaption, figure, footer, header, menu, nav, section 
     background-color: transparent;
 }
 
-canvas {
-    background-color: #f3f3f3;
-    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
-    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
-    box-shadow: 3px 3px 3px 0 #e3e3e3;
-    border: 1px solid #c3c3c3;
-    height: 100px;
-    margin: 6px 0 0 6px;
-}
-
 ol, ul {
     list-style: none;
 }
@@ -44,9 +34,56 @@ input[type=file] {
     border-color: rgba(1, 104, 21, 0.6);
 }
 
+.btn-success {
+    background-color: rgba(1, 104, 21, 0.6);
+    border-color: rgba(1, 104, 21, 0.6);
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: white !important;
+    background-color: rgba(1, 104, 21, 0.6) !important;
+    border: none !important;
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover {
+    color: rgba(1, 104, 21, 0.6) !important;
+    background-color: white !important;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus,
+.pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    color: rgba(1, 104, 21, 0.6) !important;
+    background-color: white !important;
+}
+
+.disabled {
+    visibility: visible !important;
+}
+
 .thumb {
     width: 100px;
     height: 100px;
+}
+
+.navBlock slider-easy .slider .hint {
+    display: none !important;
+}
+slider-easy .slider {
+    padding-top: 0 !important;
+}
+
+slider-easy .slider .slider-track .slider-handle {
+    background-color: maroon !important;
+    opacity: 1 !important;
+}
+slider-easy .slider .slider-track .slider-selection {
+    background-image: none !important;
+    background-color: maroon;
+}
+slider-easy .slider .slider-track {
+    background-image: none !important;
+    background-color: black;
+    opacity: 0.6 !important;
 }
 
 /* Basic */
@@ -267,8 +304,8 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 .productsNavComponent {
-    width: 19.8%;
-    margin-right: 0.2%;
+    /*width: 19.8%;*/
+    /*margin-right: 0.2%;*/
     padding: 0;
 
 }
@@ -309,7 +346,6 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 .productsComponent {
-    width: 80%;
     padding: 0;
     background-color: transparent;
 }
@@ -318,7 +354,7 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
     display: inline-table;
     height: 300px;
     width: 24.8%;
-    margin: 0 0 2px 2px;
+    margin-bottom: 2px;
     background: linear-gradient(to right, transparent, black, black, black, black, black, black, transparent);
 }
 
@@ -329,7 +365,7 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 .products img {
     margin: 0 auto;
     height: 190px;
-    max-width: 200px;
+    width: 180px;
     padding-top: 5px;
 }
 

@@ -23,26 +23,48 @@
 
 <ui-view>
     <div class="col-md-9 col-sm-9 productsComponent">
-            <div class="products col-md-3 col-sm-3" ng-repeat="wine in $ctrl.main.wines"
-                 ui-sref="products.detailed({id: wine.id})">
-                <img ng-src="{{$ctrl.main.path + 'get_image/' + wine.id}}" alt="" class="center-block"/>
+        <div class="products col-md-3 col-sm-3" ng-repeat="item in $ctrl.items">
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
+                 ui-sref="products.detailed({id: item.id})"/>
 
-                <div class="productsDescription" ui-sref="products.detailed({id: wine.id})">
-                <h4>{{wine.name}}</h4>
-                <span>Код товара: U22794</span>
-                <p>{{wine.price | currency: '₴ '}} грн.</p>
-                </div>
-
-                <div class="productsAddToCartSection">
-                    <ngcart-addtocart id="{{ wine.id }}"
-                                      name="{{ wine.name }}"
-                                      price="{{ wine.price }}"
-                                      quantity="{{ wine.min_quantity }}"
-                                      quantity-min="{{ wine.min_quantity }}"
-                                      quantity-max="{{ wine.max_quantity }}">
-                        Add to Cart
-                    </ngcart-addtocart>
-                </div>
+            <div class="productsDescription" ui-sref="products.detailed({id: item.id})">
+            <h4>{{item.name}}</h4>
+            <span>Код товара: U22794</span>
+            <p>{{item.price | currency: '₴ '}} грн.</p>
             </div>
+
+            <div class="productsAddToCartSection">
+                <ngcart-addtocart id="{{ item.id }}"
+                                  name="{{ item.name }}"
+                                  price="{{ item.price }}"
+                                  quantity="{{ item.min_quantity }}"
+                                  quantity-min="{{ item.min_quantity }}"
+                                  quantity-max="{{ item.max_quantity }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
     </div>
+
+    <div class="text-center">
+        <!-- pager -->
+        <ul ng-if="$ctrl.pager.pages.length" class="pagination">
+            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+                <a ng-click="$ctrl.setPage(1)">First</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage - 1)">Previous</a>
+            </li>
+            <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
+                <a ng-click="$ctrl.setPage(page)">{{page}}</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage + 1)">Next</a>
+            </li>
+            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                <a ng-click="$ctrl.setPage($ctrl.pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+
 </ui-view>

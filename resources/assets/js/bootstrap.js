@@ -7,6 +7,9 @@ require('angular-cookies');
 require('angular-xeditable');
 require('angular-file-upload');
 require('ng-file-upload');
+require('angular-slider-easy');
+require('angular-rangeslider');
+require('angular-utils-pagination');
 require('./main/main.module.js');
 
 window._ = require('lodash');

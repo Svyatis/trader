@@ -34,6 +34,19 @@ class WineRepository
         return $wines;
     }
 
+    /**
+     * @param $request
+     * @return mixed
+     */
+    public function searchData($request) {
+        $name = $request->has('name') ? $request->get('name') : '';
+        $minPrice = $request->has('start') ? $request->get('start') : null;
+        $maxPrice = $request->has('end') ? $request->get('end') : null;
+        $arr = [$minPrice, $maxPrice];
+        $resp = $this->model->where('name', 'like', '%' . $name . '%')->whereBetween('price', $arr)->get();
+        return $resp->toArray();
+    }
+
     public function getType() {
         $type = $this->model->select('type')->distinct()->get();
         return $type;

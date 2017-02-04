@@ -1,0 +1,50 @@
+<hr/><div>
+
+    <a style="margin-left: 45%; font-size: 25px;"><span>Вина</span></a>
+
+    <a data-toggle="modal"
+       data-target="#submit_request"
+       id="myModalShow"
+       class="btn btn-success btn-sm pull-right"
+       style="width: 200px">
+        <span>Добавити товар</span>
+    </a>
+
+</div><hr/>
+
+<table style="width: 100%">
+    <thead>
+    <tr style="border: 1px solid rgba(1, 104, 21, 0.6); color: maroon" class="text-center">
+        <th class="col-md-1">ІД</th>
+        <th class="col-md-5">Назва</th>
+        <th class="col-md-1">Ціна</th>
+        <th class="col-md-1">Мін. кількість</th>
+        <th class="col-md-1">Макс. кількість</th>
+        <th class="col-md-1">Тип</th>
+        <th class="col-md-2"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="wine in $ctrl.data.wines"
+        style="border: 1px solid rgba(1, 104, 21, 0.6); color: white">
+        <td>{{wine.id}}</td>
+        <td>{{wine.name}}</td>
+        <td>{{wine.price}}</td>
+        <td>{{wine.min_quantity}}</td>
+        <td>{{wine.max_quantity}}</td>
+        <td>{{wine.type}}</td>
+        <td><span><input type="button" ng-click="$ctrl.main.editModal(wine.id,
+                                                            wine.name,
+                                                            wine.price,
+                                                            wine.min_quantity,
+                                                            wine.max_quantity,
+                                                            wine.type)"
+                         value="Редагувати"
+                         data-toggle="modal"
+                         data-target="#edit_request"
+                         id="myEditModalWinesShow"/></span>
+            <span><input type="button" ng-click="$ctrl.main.delete(wine.id)" value="Видалити" /></span>
+        </td>
+    </tr>
+    </tbody>
+</table>
