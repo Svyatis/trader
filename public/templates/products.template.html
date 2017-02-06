@@ -20,8 +20,8 @@
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Фильтры</span>
         <h4>Фильтровать по цене:</h4><br/>
-        <span>{{ val.start | currency: '$' }}</span> - <span>{{ val.end | currency: '$' }}</span>
-        <slider-easy value="val" option="option"></slider-easy><br/>
+        <span>{{ val1.start | currency: '₴ ' }}</span> грн. - <span>{{ val1.end | currency: '₴ ' }}</span> грн.
+        <slider-easy value="val1" option="option1"></slider-easy><br/>
         <input type="submit" class="btn" id="searchButton" value="Фильтровать" ng-click="$ctrl.filterPage(1)"/>
     </div>
 
@@ -56,19 +56,19 @@
 <div class="col-md-12 text-center">
     <!-- pager -->
     <ul ng-if="$ctrl.pager.pages.length" class="pagination">
-        <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+        <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
             <a ng-click="$ctrl.filterPage(1)">First</a>
         </li>
-        <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+        <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
             <a ng-click="$ctrl.filterPage($ctrl.pager.currentPage - 1)">Previous</a>
         </li>
         <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
             <a ng-click="$ctrl.filterPage(page)">{{page}}</a>
         </li>
-        <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+        <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
             <a ng-click="$ctrl.filterPage($ctrl.pager.currentPage + 1)">Next</a>
         </li>
-        <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+        <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
             <a ng-click="$ctrl.filterPage($ctrl.pager.totalPages)">Last</a>
         </li>
     </ul>

@@ -56,15 +56,16 @@ module.exports = angular
 
         $ctrl.getAll = function() {
             TraderService.getProducts().get().$promise.then(function(data) {
+                console.log(data);
                 $ctrl.wines = data.wines;
                 $ctrl.groceries = data.groceries;
                 $ctrl.wineTypes = switchTypes(data.winesType);
                 $ctrl.groceriesTypes = switchTypes(data.groceriesType);
                 var types = $ctrl.wineTypes.concat($ctrl.groceriesTypes);
-                var pagination = data.fullArray;
-                shareData.addItem(data);
+                shareData.addItem(data.fullArray);
                 shareData.addItem(types);
-                shareData.addItem(pagination);
+                shareData.addItem($ctrl.wines);
+                shareData.addItem($ctrl.groceries);
             });
         };
         $ctrl.getAll();

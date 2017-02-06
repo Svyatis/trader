@@ -18,7 +18,7 @@
         <li>{{ ngCart.getTotalItems() }}
         <ng-pluralize
                 count="ngCart.getTotalItems()"
-                when="{1: 'товар', 2: 'товари', 3: 'товари', 4: 'товари', 'other':'товарів'}">
+                when="{1: 'товар', 2: 'товара', 3: 'товара', 4: 'товара', 'other':'товаров'}">
         </ng-pluralize></li>
         <li>{{ ngCart.totalCost() | currency: '₴ ' }} грн.</li>
     </ul>

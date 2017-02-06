@@ -1,6 +1,24 @@
-<div class="text-center">Макароны</div>
+<div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+    <div class="navBlock">
+        <span class="col-md-12 winesNavBackButton" ui-sref="products.grocery">
+            <span class="glyphicon glyphicon-chevron-left">
+                </span> Назад</span>
+        <div class="navBlock">
+            <span class="col-md-12 winesNavHeader">Продукты</span>
+            <a ui-sref="products.grocery.cheese" ui-sref-active="current-page-item">Сыры</a>
+            <a ui-sref="products.grocery.macaroni" ui-sref-active="current-page-item">Макароны</a>
+            <a ui-sref="products.grocery.coffee" ui-sref-active="current-page-item">Кофе</a>
+            <a ui-sref="products.grocery.olive_oil" ui-sref-active="current-page-item">Оливковое масло</a>
+            <a ui-sref="products.grocery.caviar" ui-sref-active="current-page-item">Икра</a>
+        </div>
+        <span class="col-md-12 winesNavHeader">Поиск</span>
+        <input type="text" id="searchField" name="search" ng-model="$ctrl.query"/>
+        <br><br>
+    </div>
+</div>
 <div class="col-md-9 col-sm-9 productsComponent">
-    <div class="products col-md-3 col-sm-3" ng-repeat="mac in $ctrl.main.groceries | filter: {type: 'macaroni'}">
+    <div class="products col-md-3 col-sm-3"
+         ng-repeat="mac in $ctrl.main.groceries | filter: {type: 'macaroni'} | filter:$ctrl.query">
         <img ng-src="{{$ctrl.main.path + 'get_image/' + mac.id}}" alt="" class="center-block"
              ui-sref="products.detailed({id: mac.id})"/>
 

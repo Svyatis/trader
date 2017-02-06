@@ -1,6 +1,173 @@
+<div class="col-md-12" id="cartCheckout" ng-show="ngCart.getTotalItems()">
+    <div class="col-md-6" id="cartCheckoutLeft">
+        <form name="paymentDetail" class="col-md-12 text-center">
 
-<div ng-if="service=='http' || service == 'log'">
-    <button class="btn btn-primary" ng-click="checkout()" ng-disabled="!ngCart.getTotalItems()" ng-transclude>Checkout</button>
+            <h2 style="color: green; font-size: 20px;">ДЕТАЛИ ОПЛАТЫ</h2>
+
+            <div class="form-group">
+                <label for="select_name">
+                </label>
+                <input  type="text"
+                        placeholder="Имя"
+                        name="select_name"
+                        ng-model="$ctrl.select_name"
+                        id="select_name"
+                        class="form-control"
+                        required/>
+            </div>
+
+            <div ng-show="paymentDetail.select_name.$touched || paymentDetail.select_name.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="paymentDetail.select_name.$error.required">
+                                Пожалуйста введите Имя
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_surname">
+                </label>
+                <input type="text" name="select_surname"
+                       placeholder="Фамилия"
+                        ng-model="$ctrl.select_surname"
+                        id="select_surname"
+                        class="form-control"
+                        required/>
+            </div>
+
+            <div ng-show="paymentDetail.select_surname.$touched || paymentDetail.select_surname.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="paymentDetail.select_surname.$error.required">
+                                Пожалуйста введите Фамилию
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_email">
+                </label>
+                <input type="email" name="select_email"
+                       placeholder="Электронная почта"
+                        ng-model="$ctrl.select_email"
+                        id="select_email"
+                        class="form-control"
+                        required/>
+            </div>
+
+            <div ng-show="paymentDetail.select_surname.$touched || paymentDetail.select_surname.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="paymentDetail.select_surname.$error.required">
+                                Пожалуйста введите адрес Электронной почты
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_phone">
+
+                </label>
+                <input type="text" name="select_phone"
+                       placeholder="Телефон"
+                       ng-model="$ctrl.select_phone"
+                       id="select_phone"
+                       class="form-control"
+                       required/>
+            </div>
+
+            <div ng-show="paymentDetail.select_phone.$touched || paymentDetail.select_phone.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="paymentDetail.select_phone.$error.required">
+                                Пожалуйста введите номер телефона
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_city">
+                </label>
+                <input type="text" name="select_city"
+                       placeholder="№ отделения или населенный пункт"
+                       ng-model="$ctrl.select_city"
+                       id="select_city"
+                       class="form-control"
+                       required/>
+            </div>
+
+            <div ng-show="paymentDetail.select_city.$touched || paymentDetail.select_city.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="paymentDetail.select_city.$error.required">
+                                Пожалуйста введите населенный пункт для доставки
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_street">
+                </label>
+                <input type="text" name="select_street"
+                       placeholder="Улица и т.д."
+                       ng-model="$ctrl.select_street"
+                       id="select_street"
+                       class="form-control"
+                       required/>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form name="Cart" class="col-md-12 text-center"
+              id="cartCheckoutRight">
+
+            <h2 style="color: green; font-size: 20px;">Оформление заказа</h2>
+            <h4 style="color: white; font-size:15px;">Общая сумма</h4>
+            <div style="color: #006600">₴ {{ ngCart.totalCost() }} грн.</div><br/>
+
+            <div class="form-group">
+                <label for="select_form_payment">
+                    <p class="cartCheckoutLable">Оплата</p>
+                </label>
+                <select name="select_form_payment"
+                        ng-model="$ctrl.select_form_payment"
+                        id="select_form_payment"
+                        class="form-control"
+                        required>
+                    <option>На карту Приват Банка</option>
+                    <option>Наличными</option>
+                </select>
+            </div>
+
+            <div ng-show="Cart.select_form_payment.$touched || Cart.select_form_payment.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="Cart.select_form_payment.$error.required">
+                                Пожалуйста введите способ оплаты
+                            </span>
+            </div><br/>
+
+            <div class="form-group">
+                <label for="select_delivery_method">
+                    <p class="cartCheckoutLable">Доставка</p>
+                </label>
+                <select type="select" name="select_delivery_method"
+                        ng-model="$ctrl.select_delivery_method"
+                        id="select_delivery_method"
+                        class="form-control"
+                        required>
+                    <option>"Дэливери"</option>
+                    <option>"Новая Почта"</option>
+                </select>
+            </div>
+
+            <div ng-show="Cart.select_delivery_method.$touched || Cart.select_delivery_method.$untouched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="Cart.select_delivery_method.$error.required">
+                                Пожалуйста введите способ доставки
+                            </span>
+            </div><br/>
+
+            <div ng-if="service=='http' || service == 'log'">
+                <button class="btn btn-success" ng-click="checkout()"
+                ng-disabled="!ngCart.getTotalItems() || paymentDetail.select_name.$error.required ||
+                paymentDetail.select_surname.$error.required || paymentDetail.select_email.$error.required ||
+                paymentDetail.select_phone.$error.required || paymentDetail.select_city.$error.required ||
+                Cart.select_form_payment.$error.required || Cart.select_delivery_method.$error.required"
+                ng-transclude>Отправить заказ</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 

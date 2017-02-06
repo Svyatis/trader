@@ -23,7 +23,7 @@ class GroceryRepository
      */
     public function getProducts() {
         try {
-            $grocery = $this->model->all();
+            $grocery = $this->model->with('priceDependencies')->get();
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),

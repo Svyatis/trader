@@ -1,3 +1,11 @@
+<style>
+    .ngCart.cart span[ng-click] {
+        cursor: pointer;
+    }
+    .ngCart.cart .glyphicon.disabled {
+        color:#aaa;
+    }
+</style>
 
 <div class="table-responsive col-lg-12 text-center" role="alert" ng-show="ngCart.getTotalItems() === 0">
     <br>
@@ -12,33 +20,19 @@
         <thead>
         <tr>
             <th></th>
-            <th></th>
-            <th>Кількість</th>
-            <th>Ціна</th>
-            <th>Загальна ціна</th>
+            <th>Название</th>
+            <th>Количество</th>
+            <th>Цена</th>
+            <th>Общая сумма</th>
         </tr>
         </thead>
         <tfoot>
-        <tr ng-show="ngCart.getTax()">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Податок ({{ ngCart.getTaxRate() }}%):</td>
-            <td>{{ ngCart.getTax() | currency: '₴ ' }}</td>
-        </tr>
-        <tr ng-show="ngCart.getShipping()">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Доставка:</td>
-            <td>{{ ngCart.getShipping() | currency: '₴ ' }}</td>
-        </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>Загальна сума:</td>
-            <td>{{ ngCart.totalCost() | currency: '₴ ' }}</td>
+            <td>Общая сумма всех товаров:</td>
+            <td>{{ ngCart.totalCost() | currency: '₴ ' }} грн.</td>
         </tr>
         </tfoot>
         <tbody>
@@ -53,17 +47,9 @@
                 <span class="glyphicon glyphicon-plus"
                       ng-class="{'disabled':item.getQuantity()+item.getQuantityMin() > item.getQuantityMax()}"
                       ng-click="item.setQuantity(item.getQuantityMin(), true)"></span></td>
-            <td>{{ item.getPrice() | currency: '₴ '}}</td>
-            <td>{{ item.getTotal() | currency: '₴ '}}</td>
+            <td>{{ item.getPrice() | currency: '₴ '}} грн.</td>
+            <td>{{ item.getTotal() | currency: '₴ '}} грн.</td>
         </tr>
         </tbody>
     </table>
 </div>
-<style>
-    .ngCart.cart span[ng-click] {
-        cursor: pointer;
-    }
-    .ngCart.cart .glyphicon.disabled {
-        color:#aaa;
-    }
-</style>

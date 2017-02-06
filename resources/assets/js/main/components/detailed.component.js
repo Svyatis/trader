@@ -17,7 +17,7 @@ module.exports = angular
  * @name DetailedCtrl
  * @memberOf mainModule
  */
-function DetailedCtrl($stateParams, TraderService) {
+function DetailedCtrl(ngCart, $stateParams, TraderService) {
     var $ctrl = this;
 
     TraderService.getDetailedProduct($stateParams.id).get().$promise.then(function(response) {

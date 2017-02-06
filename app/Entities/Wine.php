@@ -20,6 +20,14 @@ class Wine extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'min_quantity', 'max_quantity', 'type', 'photo'
+        'name', 'price', 'vendor', 'min_quantity', 'max_quantity', 'type', 'description', 'photo'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function priceDependencies()
+    {
+        return $this->hasMany(PriceDependency::class, 'wine_id', 'id');
+    }
 }

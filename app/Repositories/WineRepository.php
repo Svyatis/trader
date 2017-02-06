@@ -24,7 +24,7 @@ class WineRepository
      */
     public function getProducts() {
         try {
-            $wines = $this->model->all();
+            $wines = $this->model->with('priceDependencies')->get();
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),

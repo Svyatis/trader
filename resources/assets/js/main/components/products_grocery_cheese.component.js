@@ -19,7 +19,4 @@ module.exports = angular
  */
 function ProductsGroceryCheeseCtrl(ngCart, $state) {
     var $ctrl = this;
-    $ctrl.go = function(id) {
-        $state.go('products.grocery.detailed', {id: id});
-    }
 }

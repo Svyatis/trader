@@ -73,6 +73,10 @@ function TraderService($resource, API_URL) {
      */
     this.deleteProduct = function(id) {
         return $resource(API_URL + 'delete_product/' + id)
+    };
+
+    this.getPriceDependencies = function(id) {
+        return $resource(API_URL + 'dependency/' +id)
     }
 }
 

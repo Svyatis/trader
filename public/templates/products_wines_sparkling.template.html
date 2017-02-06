@@ -1,6 +1,22 @@
-<div class="text-center">Игристые вина</div>
+<div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+    <div class="navBlock">
+        <span class="col-md-12 winesNavBackButton" ui-sref="products.wines">
+            <span class="glyphicon glyphicon-chevron-left">
+                </span> Назад</span>
+        <div class="navBlock">
+            <span class="col-md-12 winesNavHeader">Вина</span>
+            <a ui-sref="products.wines.sparkling" ui-sref-active="current-page-item">Игристые</a>
+            <a ui-sref="products.wines.dry" ui-sref-active="current-page-item">Сухие</a>
+            <a ui-sref="products.wines.semisweet" ui-sref-active="current-page-item">Полусладкие</a>
+        </div>
+        <span class="col-md-12 winesNavHeader">Поиск</span>
+        <input type="text" id="searchField" name="search" ng-model="$ctrl.query"/>
+        <br><br>
+    </div>
+</div>
 <div class="col-md-9 col-sm-9 productsComponent">
-    <div class="products col-md-3 col-sm-3" ng-repeat="wine in $ctrl.main.wines | filter: {type: 'sparkling'}">
+    <div class="products col-md-3 col-sm-3"
+         ng-repeat="wine in $ctrl.main.wines | filter: {type: 'sparkling'} | filter:$ctrl.query">
         <img ng-src="{{$ctrl.main.path + 'get_image/' + wine.id}}" alt="" class="center-block"
              ui-sref="products.detailed({id: wine.id})"/>
 

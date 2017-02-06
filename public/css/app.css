@@ -7746,8 +7746,8 @@ input[type=file] {
   background-color: white !important;
 }
 
-.disabled {
-  visibility: visible !important;
+.disabledPagination {
+  visibility: visible;
 }
 
 .thumb {
@@ -7802,7 +7802,21 @@ h1, h2, h3, h4 {
 
 img.left {
   float: left;
-  padding: 0 5px 5px 2px;
+  padding: 5px 5px 5px 2px;
+  width: 250px;
+  height: 170px;
+}
+
+#detailedPicture {
+  max-width: 260px;
+  max-height: 400px;
+}
+
+#detailedPageCart {
+  padding-top: 3px;
+  height: 45px;
+  position: absolute;
+  margin-top: 20px;
 }
 
 img.top {
@@ -7830,7 +7844,14 @@ svg {
   fill: #fff;
 }
 
-input[type=text], input[type=number] {
+input[type=password] {
+  background-color: transparent;
+  border: 1px solid rgba(1, 104, 21, 0.6);
+  color: #fff;
+  text-align: center;
+}
+
+input[type=text], input[type=number], input[type=email] {
   background-color: transparent;
   border: 1px solid rgba(1, 104, 21, 0.6);
   color: #fff;
@@ -7967,7 +7988,23 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
   min-height: 500px;
   background-color: rgba(15, 15, 15, 0.9);
   padding-top: 5px;
-  padding-bottom: 20px;
+}
+
+.loginForm {
+  margin-top: 100px;
+}
+
+fieldset.scheduler-border {
+  border: solid 1px #DDD !important;
+  padding: 0 10px 10px 10px;
+  border-bottom: none;
+}
+
+legend.scheduler-border {
+  width: auto !important;
+  border: none;
+  font-size: 14px;
+  color: #006600;
 }
 
 .productsNav {
@@ -7995,12 +8032,9 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 
 #productsPageWrapper {
   margin: 0 -15px 0 -15px;
-  background-color: rgba(15, 15, 15, 0.8);
 }
 
 .productsNavComponent {
-  /*width: 19.8%;*/
-  /*margin-right: 0.2%;*/
   padding: 0;
 }
 
@@ -8039,6 +8073,21 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
   text-transform: lowercase;
   color: #fff;
   font-size: medium;
+}
+
+.winesNavBackButton {
+  margin-bottom: 10px;
+  padding: 5px 0 5px 0;
+  background: -webkit-linear-gradient(left, transparent, maroon, transparent);
+  background: linear-gradient(to right, transparent, maroon, transparent);
+  text-transform: lowercase;
+  color: #fff;
+  font-size: medium;
+}
+
+.winesNavBackButton:hover {
+  cursor: pointer;
+  color: #090909;
 }
 
 .productsComponent {
@@ -8115,6 +8164,23 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 .modalBasket {
   background-color: #006600;
   border-color: #006600;
+}
+
+#cartCheckout {
+  border: 1px solid white;
+}
+
+#cartCheckoutRight {
+  padding: 20px;
+}
+
+#cartCheckoutLeft {
+  border-right: 1px solid white;
+  padding: 20px;
+}
+
+p.cartCheckoutLable {
+  color: white;
 }
 
 /* Footer */

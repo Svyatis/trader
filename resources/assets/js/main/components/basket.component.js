@@ -17,5 +17,4 @@ module.exports = angular
  */
 function BasketCtrl(ngCart) {
     var $ctrl = this;
-
 }

@@ -36,9 +36,12 @@
         <td><span><input type="button" ng-click="$ctrl.main.editModal(wine.id,
                                                             wine.name,
                                                             wine.price,
+                                                            wine.vendor,
                                                             wine.min_quantity,
                                                             wine.max_quantity,
-                                                            wine.type)"
+                                                            wine.description,
+                                                            wine.type,
+                                                            wine.price_dependencies)"
                          value="Редагувати"
                          data-toggle="modal"
                          data-target="#edit_request"

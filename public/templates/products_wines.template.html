@@ -1,4 +1,7 @@
+<ui-view>
 <div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+<span class="col-md-12 winesNavBackButton" ui-sref="products">
+<span class="glyphicon glyphicon-chevron-left"></span> Назад</span>
     <div class="navBlock">
     <span class="col-md-12 winesNavHeader">Вина</span>
         <a ui-sref="products.wines.sparkling" ui-sref-active="current-page-item">Игристые</a>
@@ -7,21 +10,22 @@
     </div>
 
     <div class="navBlock">
-    <span class="col-md-12 winesNavHeader">Поиск</span>
-        <input type="text" name="search">
+        <span class="col-md-12 winesNavHeader">Поиск</span>
+        <input type="text" id="searchField" name="search"
+               ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)">
         <br><br>
-        <input type="submit" class="btn" value="Поиск">
     </div>
 
     <div class="navBlock">
-    <span class="col-md-12 winesNavHeader">Фильтры</span>
-        <h4>Фильтровать по цене:</h4>
-        <input title="min-price" type="number" min="0" value="0">
+        <span class="col-md-12 winesNavHeader">Фильтры</span>
+        <h4>Фильтровать по цене:</h4><br/>
+        <span>{{ val2.start | currency: '₴ ' }}</span> грн. - <span>{{ val2.end | currency: '₴ ' }}</span> грн.
+        <slider-easy value="val2" option="option2"></slider-easy><br/>
+        <input type="submit" class="btn" id="searchButton" value="Фильтровать" ng-click="$ctrl.filterPage(1)"/>
     </div>
 
 </div>
 
-<ui-view>
     <div class="col-md-9 col-sm-9 productsComponent">
         <div class="products col-md-3 col-sm-3" ng-repeat="item in $ctrl.items">
             <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
@@ -49,19 +53,19 @@
     <div class="text-center">
         <!-- pager -->
         <ul ng-if="$ctrl.pager.pages.length" class="pagination">
-            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
                 <a ng-click="$ctrl.setPage(1)">First</a>
             </li>
-            <li ng-class="{disabled:$ctrl.pager.currentPage === 1}">
+            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
                 <a ng-click="$ctrl.setPage($ctrl.pager.currentPage - 1)">Previous</a>
             </li>
             <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
                 <a ng-click="$ctrl.setPage(page)">{{page}}</a>
             </li>
-            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
                 <a ng-click="$ctrl.setPage($ctrl.pager.currentPage + 1)">Next</a>
             </li>
-            <li ng-class="{disabled:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
                 <a ng-click="$ctrl.setPage($ctrl.pager.totalPages)">Last</a>
             </li>
         </ul>

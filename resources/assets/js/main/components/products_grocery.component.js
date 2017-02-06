@@ -27,12 +27,13 @@ module.exports = angular
  * @param PagerService
  * @param TraderService
  * @param shareData
+ * @param $scope
  * @memberOf mainModule
  */
 function ProductsGroceryCtrl(ngCart, PagerService, TraderService, shareData, $scope) {
     var $ctrl = this;
     $ctrl.data = shareData.getList();
-    $ctrl.dummyItems = $ctrl.data[2];
+    $ctrl.dummyItems = $ctrl.data[3];
     $ctrl.minPrice = Math.min.apply(Math,$ctrl.dummyItems.map(function(o){return o.price;}));
     $ctrl.maxPrice = Math.max.apply(Math,$ctrl.dummyItems.map(function(o){return o.price;}));
     $ctrl.search = {};
@@ -45,10 +46,10 @@ function ProductsGroceryCtrl(ngCart, PagerService, TraderService, shareData, $sc
     initController();
 
     $ctrl.filterPage = function(page) {
-        $ctrl.data = {'start': $scope.val.start, 'end':$scope.val.end, 'name': $ctrl.search.name};
+        $ctrl.data = {'start': $scope.val3.start, 'end':$scope.val3.end, 'name': $ctrl.search.name};
         TraderService.searchData($ctrl.data).post().$promise.then(function(response) {
-            $ctrl.pager = PagerService.GetPager(response.res.length, page);
-            $ctrl.items = response.res.slice($ctrl.pager.startIndex, $ctrl.pager.endIndex + 1);
+            $ctrl.pager = PagerService.GetPager(response.grocerySearch.length, page);
+            $ctrl.items = response.grocerySearch.slice($ctrl.pager.startIndex, $ctrl.pager.endIndex + 1);
         });
     };
 
@@ -60,11 +61,11 @@ function ProductsGroceryCtrl(ngCart, PagerService, TraderService, shareData, $sc
         $ctrl.items = $ctrl.dummyItems.slice($ctrl.pager.startIndex, $ctrl.pager.endIndex + 1);
     }
 
-    $scope.val = {};
-    $scope.option = {
+    $scope.val3 = {};
+    $scope.option3 = {
         start: $ctrl.minPrice,  //start point of the slider bar
         end: $ctrl.maxPrice,  //end point of the slider bar
-        handles: [40, 900],  //init point of two handles
+        handles: [$ctrl.minPrice, $ctrl.maxPrice],  //init point of two handles
         outFormatter: function(value, decimals) {
             if (value.point) {
                 return value.point;

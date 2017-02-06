@@ -1,21 +1,28 @@
-<div class="col-md-12">
-    <h3>Login Page</h3>
+<div class="col-md-6 row">
 
-    <form ng-submit="$ctrl.formSubmit()" class="form">
-        <div class="col-md-4">
-            <div class="form-group">
-                <input type="text" class="form-control" ng-model="$ctrl.username" placeholder="username" required=""/>
+    <form ng-submit="$ctrl.formSubmit()" class="col-md-12 col-md-offset-7 text-center loginForm">
+        <fieldset class="scheduler-border form-group">
+            <legend class="scheduler-border">Login Form</legend>
+            <br/>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="text" class="form-control"
+                           ng-model="$ctrl.username"
+                           placeholder="username" required=""/>
+                </div><br/>
+
+                <div class="form-group">
+                    <input type="password" class="form-control"
+                           ng-model="$ctrl.password"
+                           placeholder="password" required=""/>
+                </div><br/>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">Login</button>
+                    <span class="text-danger">{{ $ctrl.error }}</span>
+                </div>
+
             </div>
-
-            <div class="form-group">
-                <input type="password" class="form-control" ng-model="$ctrl.password" placeholder="password" required=""/>
-            </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-success">Login</button>
-                <span class="text-danger">{{ $ctrl.error }}</span>
-            </div>
-
-        </div>
+        </fieldset>
     </form>
 </div>

@@ -32,7 +32,6 @@ module.exports = angular
 function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
     var $ctrl = this;
     $ctrl.data = shareData.getList();
-    console.log($ctrl.data);
     $ctrl.types = $ctrl.data[1];
 
     $ctrl.save = function( file ) {
@@ -44,11 +43,14 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
                 'my-header': 'my-header-value'
             },
             data: {file: file,
-                    name: $ctrl.select_name,
-                    price: $ctrl.select_price,
-                    min_quantity: $ctrl.select_min_quantity,
-                    max_quantity: $ctrl.select_max_quantity,
-                    type: $ctrl.select_type},
+                    name: $ctrl.create_name,
+                    price: $ctrl.create_price,
+                    vendor: $ctrl.create_vendor,
+                    min_quantity: $ctrl.create_min_quantity,
+                    max_quantity: $ctrl.create_max_quantity,
+                    description: $ctrl.create_description,
+                    type: $ctrl.create_type,
+                    discount: $ctrl.discount},
             fileFormDataName: 'file'
         });
 
@@ -65,9 +67,12 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
         var data = {file: file,
             name: $ctrl.edit_name,
             price: $ctrl.edit_price,
+            vendor: $ctrl.edit_vendor,
             min_quantity: $ctrl.edit_min_quantity,
             max_quantity: $ctrl.edit_max_quantity,
-            type: $ctrl.edit_type};
+            description: $ctrl.edit_description,
+            type: $ctrl.edit_type,
+            discount: $ctrl.discount};
 
         if(file != {}) {
             file={};
@@ -98,14 +103,22 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
 
     };
 
-    $ctrl.editModal = function(id, name, price, min_q, max_q, type) {
+    $ctrl.editModal = function(id, name, price, vendor, min_q, max_q, description, type, discount) {
         $ctrl.edit_id = id;
         $ctrl.edit_name = name;
         $ctrl.edit_price = price;
+        $ctrl.edit_vendor = vendor;
         $ctrl.edit_min_quantity = min_q;
         $ctrl.edit_max_quantity = max_q;
+        $ctrl.edit_description = description;
+        $ctrl.edit_discount = discount;
         $ctrl.edit_type = type;
+        $ctrl.discount = [];
+        for(var i=0;i<discount.length;i++) {
+            $ctrl.discount[discount[i].id] = discount[i];
+        }
         $ctrl.file = API_URL + 'get_image/' + id;
+        console.log($ctrl.discount);
     };
 
     if(!(sessionStorage.LoggedIn == 'Yes')) {

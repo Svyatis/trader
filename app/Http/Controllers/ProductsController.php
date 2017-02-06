@@ -36,11 +36,12 @@ class ProductsController extends Controller
     public function index()
     {
         $wines = $this->wineRepo->getProducts();
+        logger($wines);
         $groceries = $this->groceryRepo->getProducts();
         $winesType = $this->wineRepo->getType();
         $groceriesType = $this->groceryRepo->getType();
-        $a1 = json_decode( $wines, true );
-        $a2 = json_decode( $groceries, true );
+        $a1 = json_decode(json_encode($wines), true);
+        $a2 = json_decode(json_encode($groceries), true);
         $res = array_merge_recursive( $a1, $a2 );
         return response()->json([
             'fullArray' => $res,
@@ -112,7 +113,9 @@ class ProductsController extends Controller
         $res = array_merge_recursive( $wineSearch, $grocerySearch );
         return response()->json([
             'status' => 200,
-            'res' => $res
+            'res' => $res,
+            'wineSearch' => $wineSearch,
+            'grocerySearch' => $grocerySearch
         ]);
     }
 
@@ -136,9 +139,11 @@ class ProductsController extends Controller
             $data = [
                 'name' => $request->get('name'),
                 'price' => $request->get('price'),
+                'vendor' => $request->get('vendor'),
                 'min_quantity' => $request->get('min_quantity'),
                 'max_quantity' => $request->get('max_quantity'),
                 'type' => $request->get('type'),
+                'description' => $request->get('description'),
                 'photo' => $upload
             ];
         } else {
@@ -210,5 +215,18 @@ class ProductsController extends Controller
             ]);
         }
         return $product;
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getDependencies () {
+        $pricesWine = $this->wineRepo->getPriceDependencies();
+        $pricesGrocery = $this->groceryRepo->getPriceDependencies();
+
+        return response()->json([
+            'pricesWine' => $pricesWine,
+            'pricesGrocery' => $pricesGrocery
+        ]);
     }
 }
