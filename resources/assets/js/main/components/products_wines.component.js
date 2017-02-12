@@ -24,6 +24,8 @@ module.exports = angular
  * @param ngCart
  * @param shareData
  * @param PagerService
+ * @param TraderService
+ * @param $scope
  * @memberOf mainModule
  */
 function ProductsWinesCtrl(ngCart, PagerService, TraderService, shareData, $scope) {

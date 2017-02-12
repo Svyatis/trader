@@ -118,7 +118,6 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
             $ctrl.discount[discount[i].id] = discount[i];
         }
         $ctrl.file = API_URL + 'get_image/' + id;
-        console.log($ctrl.discount);
     };
 
     if(!(sessionStorage.LoggedIn == 'Yes')) {

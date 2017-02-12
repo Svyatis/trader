@@ -66,7 +66,7 @@ class GroceryRepository
      * @return \Illuminate\Http\JsonResponse
      */
     public function getProduct($id) {
-        if($product = $this->model->find($id)) {
+        if($product = $this->model->with('priceDependencies')->find($id)) {
             return response()->json([
                 'status' => 200,
                 'message' => 'OK',

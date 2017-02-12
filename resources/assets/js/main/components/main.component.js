@@ -56,9 +56,9 @@ module.exports = angular
 
         $ctrl.getAll = function() {
             TraderService.getProducts().get().$promise.then(function(data) {
-                console.log(data);
                 $ctrl.wines = data.wines;
                 $ctrl.groceries = data.groceries;
+                console.log(data.wines);
                 $ctrl.wineTypes = switchTypes(data.winesType);
                 $ctrl.groceriesTypes = switchTypes(data.groceriesType);
                 var types = $ctrl.wineTypes.concat($ctrl.groceriesTypes);
@@ -69,7 +69,6 @@ module.exports = angular
             });
         };
         $ctrl.getAll();
-
 
         $scope.basket = function () {
             $scope.showBasket = !ngCart.isEmpty();

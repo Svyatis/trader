@@ -12,7 +12,7 @@
     <div class="navBlock">
         <span class="col-md-12 winesNavHeader">Поиск</span>
         <input type="text" id="searchField" name="search"
-               ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)">
+               ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)" />
         <br><br>
     </div>
 
@@ -30,7 +30,6 @@
         <div class="products col-md-3 col-sm-3" ng-repeat="item in $ctrl.items">
             <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
                  ui-sref="products.detailed({id: item.id})"/>
-
             <div class="productsDescription" ui-sref="products.detailed({id: item.id})">
             <h4>{{item.name}}</h4>
             <span>Код товара: U22794</span>
@@ -43,7 +42,8 @@
                                   price="{{ item.price }}"
                                   quantity="{{ item.min_quantity }}"
                                   quantity-min="{{ item.min_quantity }}"
-                                  quantity-max="{{ item.max_quantity }}">
+                                  quantity-max="{{ item.max_quantity }}"
+                                  discount="{{ item.price_dependencies }}">
                     Add to Cart
                 </ngcart-addtocart>
             </div>
