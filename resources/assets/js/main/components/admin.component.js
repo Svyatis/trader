@@ -95,6 +95,7 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
         }
 
         file.upload.then( function ( response ) {
+            $ctrl.cancelModal();
             $ctrl.main.getAll();
         }, function ( response ) {
             if ( response.status > 0 )
@@ -128,11 +129,20 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
         $ctrl.file = null;
         $('#imgSaveForm').val('');
         $('#file').val('');
-        $('#select_name').val('');
-        $('#select_price').val('');
-        $('#select_min_quantity').val('');
-        $('#select_max_quantity').val('');
-        $('#select_type').val('');
+        $('#create_name').val('');
+        $('#create_vendor').val('');
+        $('#create_price').val('');
+        $('#create_old_price').val('');
+        $('#create_min_quantity').val('');
+        $('#create_max_quantity').val('');
+        $('#create_description').val('');
+        $('#create_type').val('');
+        $('#create_discount_quantity1').val('');
+        $('#create_discount_quantity2').val('');
+        $('#create_discount_quantity3').val('');
+        $('#create_discount_price1').val('');
+        $('#create_discount_price2').val('');
+        $('#create_discount_price3').val('');
     };
 
     $ctrl.delete = function(id) {

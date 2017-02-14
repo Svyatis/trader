@@ -8166,6 +8166,10 @@ legend.scheduler-border {
   border-color: #006600;
 }
 
+.modal-footer {
+  border: none !important;
+}
+
 #cartCheckout {
   border: 1px solid white;
 }

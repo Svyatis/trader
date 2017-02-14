@@ -40,39 +40,22 @@
 
                     </div><br/>
 
-                    <div class="form-group">
-                        <label for="create_name">
-                            Назва товару
-                        </label>
-                        <input type="text" name="create_name"
-                               ng-model="$ctrl.create_name"
-                               id="create_name"
-                               class="form-control input-sm"
-                               required />
-                    </div>
-
-                    <div ng-show="createProduct.create_name.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_name.$error.required">
-                            Будь ласка введіть назву товару
-                        </span>
-                    </div>
-
                     <div class="col-md-12">
                         <div class="form-group col-md-6">
-                            <label for="create_price">
-                                Ціна товару
+                            <label for="create_name">
+                                Назва товару
                             </label>
-                            <input type="text" name="create_price"
-                                   ng-model="$ctrl.create_price"
-                                   id="create_price"
+                            <input type="text" name="create_name"
+                                   ng-model="$ctrl.create_name"
+                                   id="create_name"
                                    class="form-control input-sm"
                                    required />
-                            <div ng-show="createProduct.create_price.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_price.$error.required">
-                                Будь ласка введіть ціну товару
-                        </span>
+
+                            <div ng-show="createProduct.create_name.$touched">
+                                <span class="alert-request-error alert-info"
+                                      ng-show="createProduct.create_name.$error.required">
+                                    Будь ласка введіть назву товару
+                                </span>
                             </div>
                         </div>
 
@@ -92,6 +75,35 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label for="create_price">
+                                Ціна товару
+                            </label>
+                            <input type="text" name="create_price"
+                                   ng-model="$ctrl.create_price"
+                                   id="create_price"
+                                   class="form-control input-sm"
+                                   required />
+                            <div ng-show="createProduct.create_price.$touched">
+                            <span class="alert-request-error alert-info"
+                              ng-show="createProduct.create_price.$error.required">
+                                Будь ласка введіть ціну товару
+                            </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="create_old_price">
+                                Стара ціна
+                            </label>
+                            <input type="number" name="create_old_price"
+                                   ng-model="$ctrl.create_old_price"
+                                   id="create_old_price"
+                                   class="form-control input-sm"/>
+                        </div>
                     </div><br/>
 
                     <div class="col-md-12">
@@ -99,16 +111,16 @@
                             <label for="create_min_quantity">
                                 Мін кількість замовлення товару
                             </label>
-                            <input type="text" name="create_min_quantity"
+                            <input type="number" name="create_min_quantity"
                                    ng-model="$ctrl.create_min_quantity"
                                    id="create_min_quantity"
                                    class="form-control input-sm"
                                    required />
                             <div ng-show="createProduct.create_min_quantity.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_min_quantity.$error.required">
-                            Будь ласка введіть мінімальну кількість замовлення товару
-                        </span>
+                                <span class="alert-request-error alert-info"
+                                  ng-show="createProduct.create_min_quantity.$error.required">
+                                Будь ласка введіть мінімальну кількість замовлення товару
+                                </span>
                             </div>
                         </div>
 
@@ -116,56 +128,101 @@
                             <label for="create_max_quantity">
                                 Макс кількість замовлення товару
                             </label>
-                            <input type="text" name="create_max_quantity"
+                            <input type="number" name="create_max_quantity"
                                    ng-model="$ctrl.create_max_quantity"
                                    id="create_max_quantity"
                                    class="form-control input-sm"
                                    required />
                             <div ng-show="createProduct.create_max_quantity.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_max_quantity.$error.required">
-                            Будь ласка введіть максимальну кількість замовлення товару
-                        </span>
+                                <span class="alert-request-error alert-info"
+                                ng-show="createProduct.create_max_quantity.$error.required">
+                                Будь ласка введіть максимальну кількість замовлення товару
+                                </span>
                             </div>
                         </div>
                     </div><br>
 
-                    <div class="form-group col-md-12">
-                        <label for="create_description">
-                            Опис товару
-                        </label>
-                        <textarea name="create_description"
-                                  ng-model="$ctrl.create_description"
-                                  id="create_description"
-                                  class="form-control input-sm"
-                                  required></textarea>
-                        <div ng-show="createProduct.create_description.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_description.$error.required">
-                            Будь ласка введіть опис товару
-                        </span>
+                    <div class="col-md-12">
+                        <div class="form-group col-md-6">
+                            <label for="create_description">
+                                Опис товару
+                            </label>
+                            <textarea name="create_description"
+                                      ng-model="$ctrl.create_description"
+                                      id="create_description"
+                                      class="form-control input-sm"
+                                      required></textarea>
+                            <div ng-show="createProduct.create_description.$touched">
+                                <span class="alert-request-error alert-info"
+                                    ng-show="createProduct.create_description.$error.required">
+                                    Будь ласка введіть опис товару
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="create_type">
+                                Тип товару
+                            </label>
+                            <select name="create_type"
+                                    ng-model="$ctrl.create_type"
+                                    id="create_type"
+                                    class="form-control input-sm"
+                                    ng-options="type for type in $ctrl.types"
+                                    required>
+                            </select>
+
+
+                            <div ng-show="createProduct.create_type.$touched">
+                                <span class="alert-request-error alert-info"
+                                    ng-show="createProduct.create_type.$error.required">
+                                    Будь ласка оберіть тип товару
+                                </span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="create_type">
-                            Тип товару
-                        </label>
-                        <select name="create_type"
-                                ng-model="$ctrl.create_type"
-                                id="create_type"
-                                class="form-control input-sm"
-                                ng-options="type for type in $ctrl.types"
-                                required>
-                        </select>
+                    <div class="col-md-12" style="padding-bottom: 5px;">
+                        <div class="form-group col-md-6">
+                            <label for="create_discount_quantity1">
+                                Кількість для знижки
+                            </label>
+                            <div>
+                            <input type="number" name="create_discount_quantity" id="create_discount_quantity1"
+                                   ng-model="$ctrl.create_discount[0].quantity" class="form-control input-sm"
+                            />
+                            </div>
+                            <div>
+                            <input type="number" name="create_discount_quantity" id="create_discount_quantity2"
+                                   ng-model="$ctrl.create_discount[1].quantity" class="form-control input-sm"
+                            />
+                            </div>
+                            <div>
+                            <input type="number" name="create_discount_quantity" id="create_discount_quantity3"
+                                   ng-model="$ctrl.create_discount[2].quantity" class="form-control input-sm"
+                            />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="create_discount_price1">
+                                Ціна зі знижкою
+                            </label>
+                            <div>
+                            <input type="number" name="create_discount_price" id="create_discount_price1"
+                                   ng-model="$ctrl.discount[0].price" class="form-control input-sm" />
+                            </div>
+                            <div>
+                            <input type="number" name="create_discount_price" id="create_discount_price2"
+                                   ng-model="$ctrl.discount[1].price" class="form-control input-sm" />
+                            </div>
+                            <div>
+                            <input type="number" name="create_discount_price" id="create_discount_price3"
+                               ng-model="$ctrl.discount[2].price" class="form-control input-sm" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div ng-show="createProduct.create_type.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="createProduct.create_type.$error.required">
-                            Будь ласка оберіть тип товару
-                        </span>
-                    </div>
                 </form>
             </div>
 
@@ -221,7 +278,8 @@
 
                     </div><br/>
 
-                    <div class="form-group">
+                <div class="col-md-12">
+                    <div class="form-group col-md-6">
                         <label for="edit_name">
                             Назва товару
                         </label>
@@ -230,14 +288,33 @@
                                id="edit_name"
                                class="form-control input-sm"
                                required />
+
+
+                        <div ng-show="editProduct.edit_name.$touched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="editProduct.edit_name.$error.required">
+                                Будь ласка введіть назву товару
+                            </span>
+                        </div>
                     </div>
 
-                    <div ng-show="editProduct.edit_name.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="editProduct.edit_name.$error.required">
-                            Будь ласка введіть назву товару
-                        </span>
+                    <div class="form-group col-md-6">
+                        <label for="edit_vendor">
+                            Актикул
+                        </label>
+                        <input type="text" name="edit_vendor"
+                               ng-model="$ctrl.edit_vendor"
+                               id="edit_vendor"
+                               class="form-control input-sm"
+                               required />
+                        <div ng-show="editProduct.edit_vendor.$touched">
+                            <div class="alert-request-error alert-info"
+                                 ng-show="editProduct.edit_vendor.$error.required">
+                                Будь ласка введіть артикул
+                            </div>
+                        </div>
                     </div>
+                </div><br/>
 
                 <div class="col-md-12">
                     <div class="form-group col-md-6">
@@ -258,20 +335,13 @@
                     </div>
 
                     <div class="form-group col-md-6">
-                        <label for="edit_vendor">
-                            Актикул
+                        <label for="edit_old_price">
+                            Стара ціна
                         </label>
-                        <input type="text" name="edit_vendor"
-                               ng-model="$ctrl.edit_vendor"
-                               id="edit_vendor"
-                               class="form-control input-sm"
-                               required />
-                        <div ng-show="editProduct.edit_vendor.$touched">
-                            <div class="alert-request-error alert-info"
-                                ng-show="editProduct.edit_vendor.$error.required">
-                                Будь ласка введіть артикул
-                            </div>
-                        </div>
+                        <input type="number" name="edit_old_price"
+                               ng-model="$ctrl.edit_old_price"
+                               id="edit_old_price"
+                               class="form-control input-sm"/>
                     </div>
                 </div><br/>
 
@@ -280,7 +350,7 @@
                         <label for="edit_min_quantity">
                             Мін кількість замовлення товару
                         </label>
-                        <input type="text" name="edit_min_quantity"
+                        <input type="number" name="edit_min_quantity"
                                ng-model="$ctrl.edit_min_quantity"
                                id="edit_min_quantity"
                                class="form-control input-sm"
@@ -297,7 +367,7 @@
                         <label for="edit_max_quantity">
                             Макс кількість замовлення товару
                         </label>
-                        <input type="text" name="edit_max_quantity"
+                        <input type="number" name="edit_max_quantity"
                                ng-model="$ctrl.edit_max_quantity"
                                id="edit_max_quantity"
                                class="form-control input-sm"
@@ -340,41 +410,39 @@
                                 ng-options="type for type in $ctrl.types"
                                 required>
                         </select>
-                    </div>
 
-                    <div ng-show="editProduct.edit_type.$touched">
-                        <span class="alert-request-error alert-info"
-                              ng-show="editProduct.edit_type.$error.required">
-                            Будь ласка оберіть тип товару
-                        </span>
+                        <div ng-show="editProduct.edit_type.$touched">
+                            <span class="alert-request-error alert-info"
+                                  ng-show="editProduct.edit_type.$error.required">
+                                Будь ласка оберіть тип товару
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-12">
-
+                <div class="col-md-12" style="padding-bottom: 5px;">
                     <div class="form-group col-md-6">
                         <label for="edit_discount_quantity">
-                            Знижки
+                            Кількість для знижки
                         </label>
 
                         <div ng-repeat="dep in $ctrl.edit_discount">
-                            <input type="text"
+                            <input type="number"
                                    name="edit_discount_quantity"
                                    ng-model="$ctrl.discount[dep.id].quantity"
                                    id="edit_discount_quantity"
                                    class="form-control input-sm"
                                    />
                         </div>
-
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="edit_discount_price">
-                            Знижки
+                            Ціна зі знижкою
                         </label>
 
                         <div ng-repeat="dep in $ctrl.edit_discount">
-                            <input type="text"
+                            <input type="number"
                                    name="edit_discount_price"
                                    ng-model="$ctrl.discount[dep.id].price"
                                    id="edit_discount_price"
@@ -382,7 +450,7 @@
                             />
                         </div>
                     </div>
-                </div><br/>
+                </div>
 
                 </form>
             </div>

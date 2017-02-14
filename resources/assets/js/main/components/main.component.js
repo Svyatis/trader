@@ -58,7 +58,6 @@ module.exports = angular
             TraderService.getProducts().get().$promise.then(function(data) {
                 $ctrl.wines = data.wines;
                 $ctrl.groceries = data.groceries;
-                console.log(data.wines);
                 $ctrl.wineTypes = switchTypes(data.winesType);
                 $ctrl.groceriesTypes = switchTypes(data.groceriesType);
                 var types = $ctrl.wineTypes.concat($ctrl.groceriesTypes);
