@@ -20,7 +20,7 @@ class Grocery extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'vendor', 'min_quantity', 'max_quantity', 'type', 'description', 'photo'
+        'name', 'price', 'old_price', 'vendor', 'min_quantity', 'max_quantity', 'type', 'description', 'photo'
     ];
 
     /**

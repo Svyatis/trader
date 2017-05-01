@@ -3,18 +3,22 @@
 namespace App\Repositories;
 
 use App\Entities\Grocery;
+use App\Entities\PriceDependency;
 
 class GroceryRepository
 {
     private $model;
+    private $priceDep;
 
     /**
      * Constructor
      * @param $grocery
+     * @param $priceDep
      */
-    public function __construct(Grocery $grocery)
+    public function __construct(Grocery $grocery, PriceDependency $priceDep)
     {
         $this->model = $grocery;
+        $this->priceDep = $priceDep;
     }
 
     /**
@@ -106,6 +110,24 @@ class GroceryRepository
     public function updateProduct($id, $data) {
         $product = $this->model->find($id);
         $upd = $product->update($data);
+        foreach ($data['discount'] as $discount) {
+            $priceDep = $this->priceDep->find($discount['id']);
+            if($discount['price'] !== "null") {
+                $attrs = [
+                    'quantity' => $discount['quantity'],
+                    'price' => $discount['price'],
+                    'wine_id' => $discount['wine_id']
+                ];
+            }
+            else {
+                $attrs = [
+                    'quantity' => null,
+                    'price' => null,
+                    'wine_id' => $discount['wine_id']
+                ];
+            }
+            $priceDep->update($attrs);
+        }
         if($upd == true) {
             return response()->json([
                 'status' => 200,

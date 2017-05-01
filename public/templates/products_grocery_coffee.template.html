@@ -16,13 +16,14 @@
         <br><br>
     </div>
 </div>
-<div class="col-md-9 col-sm-9 productsComponent">
+
+<div class="col-md-9 col-sm-9 text-center">
     <div class="products col-md-3 col-sm-3"
          ng-repeat="coff in $ctrl.main.groceries | filter: {type: 'coffee'} | filter:$ctrl.query">
         <img ng-src="{{$ctrl.main.path + 'get_image/' + coff.id}}" alt="" class="center-block"
-             ui-sref="products.detailed({id: coff.id})"/>
+             ui-sref="products.detailed({id: coff.id, quan: coff.min_quantity})"/>
 
-        <div class="productsDescription" ui-sref="products.detailed({id: coff.id})">
+        <div class="productsDescription" ui-sref="products.detailed({id: coff.id, quan: coff.min_quantity})">
             <h4>{{coff.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{coff.price | currency: '₴ '}} грн.</p>

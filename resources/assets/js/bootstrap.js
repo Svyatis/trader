@@ -1,4 +1,15 @@
 var angular = require('angular');
+
+
+/**
+ * We'll load jQuery and the Bootstrap jQuery plugin which provides support
+ * for JavaScript based Bootstrap features such as modals and tabs. This
+ * code may be modified to fit the specific needs of your application.
+ */
+
+window.$ = window.jQuery = require('jquery');
+require('bootstrap-sass');
+
 require('angular-ui-router');
 require('angular-resource');
 require('ngCart/dist/ngCart');
@@ -10,18 +21,10 @@ require('ng-file-upload');
 require('angular-slider-easy');
 require('angular-rangeslider');
 require('angular-utils-pagination');
+require('slick-carousel');
 require('./main/main.module.js');
 
 window._ = require('lodash');
-
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
-
-window.$ = window.jQuery = require('jquery');
-require('bootstrap-sass');
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

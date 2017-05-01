@@ -1,21 +1,31 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3 col-sm-3 text-center center-block"></div>
 
-        <section>
-            <h2>Акції</h2>
-        </section>
+    <div class="col-md-9 text-center">
+        <!-- items being paged -->
+        <div class="products col-md-2 col-sm-2"
+             ng-repeat="item in $ctrl.items | filter: {old_price: ''}">
+            <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
+                 ui-sref="products.detailed({id: item.id, quan: item.min_quantity})"/>
 
-    </div>
-    <div class="col-md-6">
+            <div class="productsDescription" ui-sref="products.detailed({id: item.id, quan: item.min_quantity})">
+                <h4>{{item.name}}</h4>
+                <span>Код товара: U22794</span>
+                <p>{{item.price | currency: '₴ '}} грн.</p>
+            </div>
 
-        <article>
-            <h2>Інформація про акції</h2>
-            <a href="#">33 коментарі</a>
+            <div class="productsAddToCartSection">
+                <ngcart-addtocart   id="{{ item.id }}"
+                                    name="{{ item.name }}"
+                                    price="{{ item.price }}"
+                                    quantity="{{ item.min_quantity }}"
+                                    quantity-min="{{ item.min_quantity }}"
+                                    quantity-max="{{ item.max_quantity }}"
+                                    discount="{{ item.price_dependencies }}">
+                    Add to Cart
+                </ngcart-addtocart>
+            </div>
+        </div>
+    </div><br/>
 
-            <footer>
-                <a href="#">Читати далі</a>
-            </footer>
-        </article>
-
-    </div>
 </div>

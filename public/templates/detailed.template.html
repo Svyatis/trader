@@ -1,10 +1,10 @@
 <div class="col-md-3">
-    <span class="col-md-12 winesNavBackButton text-center" ui-sref="products">
+    <span class="col-md-12 winesNavBackButton text-center" ng-click="$ctrl.doBack()">
     <span class="glyphicon glyphicon-chevron-left"></span> Назад</span>
-    <img ng-src="{{$ctrl.main.path + 'get_image/' + $ctrl.product.id}}" id="detailedPicture" alt="No picture"/>
+    <img ng-src="{{$ctrl.main.path + 'get_image/' + $ctrl.data.product.id}}" id="detailedPicture" alt="No picture"/>
     <article>
-        <p ng-if="$ctrl.product.price_dependencies[0]">Цена зависит от количества:</p>
-        <ul ng-repeat="x in $ctrl.product.price_dependencies">
+        <p ng-if="$ctrl.data.product.price_dependencies[0]">Цена зависит от количества:</p>
+        <ul ng-repeat="x in $ctrl.data.product.price_dependencies">
             <li> от {{x.quantity}} шт. - {{x.price}} грн.</li>
         </ul>
     </article>
@@ -16,26 +16,26 @@
         </li>
         <li>
             <span>Название:</span>
-            <strong style="font-size: 15px; color: #006600">{{$ctrl.product.name}}</strong>
+            <strong style="font-size: 15px; color: #006600">{{$ctrl.data.product.name}}</strong>
         </li>
         <li>
             Цена:
-            <strong style="font-size: 15px; color: #006600">{{$ctrl.product.price}}</strong>
+            <strong style="font-size: 15px; color: #006600">{{$ctrl.data.product.price}}</strong>
         </li>
         <li>
             Минимальный заказ:
-            <strong style="font-size: 15px; color: #006600">{{$ctrl.product.min_quantity}}</strong>
+            <strong style="font-size: 15px; color: #006600">{{$ctrl.data.product.min_quantity}}</strong>
         </li>
         <li>
             Замовити:
-            <div id="detailedPageCart" ng-init="$ctrl.product.min_quantity">
-                <ngcart-addtocart id="{{ $ctrl.product.id }}"
-                                  name="{{ $ctrl.product.name }}"
-                                  price="{{ $ctrl.product.price }}"
-                                  quantity="{{ quantity }}"
-                                  quantity-min="{{ $ctrl.product.min_quantity }}"
-                                  quantity-max="{{ $ctrl.product.max_quantity }}"
-                                  discount="{{ $ctrl.product.price_dependencies }}">
+            <div id="detailedPageCart">
+                <ngcart-addtocart id="{{ $ctrl.data.product.id }}"
+                                  name="{{ $ctrl.data.product.name }}"
+                                  price="{{ $ctrl.data.product.price }}"
+                                  quantity="{{ $ctrl.quan != null ? $ctrl.quan : $ctrl.data.product.min_quantity }}"
+                                  quantity-min="{{ $ctrl.data.product.min_quantity }}"
+                                  quantity-max="{{ $ctrl.data.product.max_quantity }}"
+                                  discount="{{ $ctrl.data.product.price_dependencies }}">
                     Add to Cart
                 </ngcart-addtocart>
             </div>

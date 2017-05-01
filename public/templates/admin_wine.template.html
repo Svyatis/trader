@@ -1,5 +1,4 @@
 <hr/><div>
-
     <a style="margin-left: 45%; font-size: 25px;"><span>Вина</span></a>
 
     <a data-toggle="modal"
@@ -9,7 +8,6 @@
        style="width: 200px">
         <span>Добавити товар</span>
     </a>
-
 </div><hr/>
 
 <table style="width: 100%">
@@ -35,8 +33,9 @@
         <td>{{wine.type}}</td>
         <td><span><input type="button" ng-click="$ctrl.main.editModal(wine.id,
                                                             wine.name,
-                                                            wine.price,
                                                             wine.vendor,
+                                                            wine.price,
+                                                            wine.old_price,
                                                             wine.min_quantity,
                                                             wine.max_quantity,
                                                             wine.description,

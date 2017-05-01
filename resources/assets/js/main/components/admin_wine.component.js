@@ -12,6 +12,6 @@ module.exports = angular
         }
     });
 
-function AdminWineCtrl(TraderService, $state, API_URL, Upload) {
-    var $ctrl = this;
+function AdminWineCtrl() {
+    //
 }

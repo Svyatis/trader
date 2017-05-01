@@ -36,7 +36,6 @@ class ProductsController extends Controller
     public function index()
     {
         $wines = $this->wineRepo->getProducts();
-        logger($wines);
         $groceries = $this->groceryRepo->getProducts();
         $winesType = $this->wineRepo->getType();
         $groceriesType = $this->groceryRepo->getType();
@@ -126,34 +125,37 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        if( $request->get('type') == 'dry'
-            || $request->get('type') == 'sparkling'
-            || $request->get('type') == 'sweet') {
-            $this->model = $this->wineRepo;
-        } else {
-            $this->model = $this->groceryRepo;
-        }
-
-        $upload = $this->uploadServ->store($request);
-        if($upload) {
-            $data = [
-                'name' => $request->get('name'),
-                'price' => $request->get('price'),
-                'vendor' => $request->get('vendor'),
-                'min_quantity' => $request->get('min_quantity'),
-                'max_quantity' => $request->get('max_quantity'),
-                'type' => $request->get('type'),
-                'description' => $request->get('description'),
-                'photo' => $upload
-            ];
-        } else {
-            return response()->json([
-                'status' => 500,
-                'message' => 'Please try again later'
-            ]);
-        }
-        $db = $this->model->saveProduct($data);
-        return $db;
+        logger($request);
+//        if( $request->get('type') == 'dry'
+//            || $request->get('type') == 'sparkling'
+//            || $request->get('type') == 'sweet') {
+//            $this->model = $this->wineRepo;
+//        } else {
+//            $this->model = $this->groceryRepo;
+//        }
+//
+//        $upload = $this->uploadServ->store($request);
+//        if($upload) {
+//            $data = [
+//                'name' => $request->get('name'),
+//                'vendor' => $request->get('vendor'),
+//                'price' => $request->get('price'),
+//                'old_price' => $request->get('old_price'),
+//                'min_quantity' => $request->get('min_quantity'),
+//                'max_quantity' => $request->get('max_quantity'),
+//                'description' => $request->get('description'),
+//                'type' => $request->get('type'),
+//                'discount' => $request->get('discount'),
+//                'photo' => $upload
+//            ];
+//        } else {
+//            return response()->json([
+//                'status' => 500,
+//                'message' => 'Please try again later'
+//            ]);
+//        }
+//        $db = $this->model->saveProduct($data);
+//        return $db;
     }
 
     /**
@@ -177,22 +179,29 @@ class ProductsController extends Controller
         $this->changeModel($id);
         $upload = $this->uploadServ->store($request);
         if($upload) {
-            logger($upload);
             $data = [
                 'name' => $request->get('name'),
+                'vendor' => $request->get('vendor'),
                 'price' => $request->get('price'),
+                'old_price' => $request->get('old_price'),
                 'min_quantity' => $request->get('min_quantity'),
                 'max_quantity' => $request->get('max_quantity'),
+                'description' => $request->get('description'),
                 'type' => $request->get('type'),
+                'discount' => $request->get('discount'),
                 'photo' => $upload
             ];
         } else {
             $data = [
                 'name' => $request->get('name'),
+                'vendor' => $request->get('vendor'),
                 'price' => $request->get('price'),
+                'old_price' => $request->get('old_price'),
                 'min_quantity' => $request->get('min_quantity'),
                 'max_quantity' => $request->get('max_quantity'),
-                'type' => $request->get('type')
+                'description' => $request->get('description'),
+                'type' => $request->get('type'),
+                'discount' => $request->get('discount')
             ];
         }
         $db = $this->model->updateProduct($id, $data);

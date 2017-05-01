@@ -1,35 +1,37 @@
 <ui-view>
-<div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
-<span class="col-md-12 winesNavBackButton" ui-sref="products">
-<span class="glyphicon glyphicon-chevron-left"></span> Назад</span>
-    <div class="navBlock">
-        <span class="col-md-12 winesNavHeader">Продукты</span>
-        <a ui-sref="products.grocery.cheese" ui-sref-active="current-page-item">Сыры</a>
-        <a ui-sref="products.grocery.macaroni" ui-sref-active="current-page-item">Макароны</a>
-        <a ui-sref="products.grocery.coffee" ui-sref-active="current-page-item">Кофе</a>
-        <a ui-sref="products.grocery.olive_oil" ui-sref-active="current-page-item">Оливковое масло</a>
-        <a ui-sref="products.grocery.caviar" ui-sref-active="current-page-item">Икра</a>
+
+    <div class="col-md-3 col-sm-3 productsNavComponent text-center center-block">
+    <span class="col-md-12 winesNavBackButton" ui-sref="products">
+    <span class="glyphicon glyphicon-chevron-left"></span> Назад</span>
+        <div class="navBlock">
+            <span class="col-md-12 winesNavHeader">Продукты</span>
+            <a ui-sref="products.grocery.cheese" ui-sref-active="current-page-item">Сыры</a>
+            <a ui-sref="products.grocery.macaroni" ui-sref-active="current-page-item">Макароны</a>
+            <a ui-sref="products.grocery.coffee" ui-sref-active="current-page-item">Кофе</a>
+            <a ui-sref="products.grocery.olive_oil" ui-sref-active="current-page-item">Оливковое масло</a>
+            <a ui-sref="products.grocery.caviar" ui-sref-active="current-page-item">Икра</a>
+        </div>
+        <div class="navBlock">
+            <span class="col-md-12 winesNavHeader">Поиск</span>
+            <input type="text" id="searchField" name="search"
+                   ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)">
+            <br><br>
+        </div>
+        <div class="navBlock">
+            <span class="col-md-12 winesNavHeader">Фильтры</span>
+            <h4>Фильтровать по цене:</h4><br/>
+            <span>{{ val3.start | currency: '₴ ' }}</span> грн. - <span>{{ val3.end | currency: '₴ ' }}</span> грн.
+            <slider-easy value="val3" option="option3"></slider-easy><br/>
+            <input type="submit" class="btn" id="searchButton" value="Фильтровать" ng-click="$ctrl.filterPage(1)"/>
+        </div>
     </div>
-    <div class="navBlock">
-        <span class="col-md-12 winesNavHeader">Поиск</span>
-        <input type="text" id="searchField" name="search"
-               ng-model="$ctrl.search.name" ng-keyup="$ctrl.filterPage(1)">
-        <br><br>
-    </div>
-    <div class="navBlock">
-        <span class="col-md-12 winesNavHeader">Фильтры</span>
-        <h4>Фильтровать по цене:</h4><br/>
-        <span>{{ val3.start | currency: '₴ ' }}</span> грн. - <span>{{ val3.end | currency: '₴ ' }}</span> грн.
-        <slider-easy value="val3" option="option3"></slider-easy><br/>
-        <input type="submit" class="btn" id="searchButton" value="Фильтровать" ng-click="$ctrl.filterPage(1)"/>
-    </div>
-</div>
-    <div class="col-md-9 col-sm-9 productsComponent">
+
+    <div class="col-md-9 col-sm-9 text-center">
         <div class="products col-md-3 col-sm-3" ng-repeat="item in $ctrl.items">
             <img ng-src="{{$ctrl.main.path + 'get_image/' + item.id}}" alt="" class="center-block"
-                 ui-sref="products.detailed({id: item.id})"/>
+                 ui-sref="products.detailed({id: item.id, quan: item.min_quantity})"/>
 
-            <div class="productsDescription" ui-sref="products.detailed({id: item.id})">
+            <div class="productsDescription" ui-sref="products.detailed({id: item.id, quan: item.min_quantity})">
                 <h4>{{item.name}}</h4>
                 <span>Код товара: U22794</span>
                 <p>{{item.price | currency: '₴ '}} грн.</p>
@@ -49,25 +51,25 @@
         </div>
     </div><br/>
 
-    <div class="text-center">
-        <!-- pager -->
-        <ul ng-if="$ctrl.pager.pages.length" class="pagination">
-            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
-                <a ng-click="$ctrl.setPage(1)">First</a>
-            </li>
-            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
-                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage - 1)">Previous</a>
-            </li>
-            <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
-                <a ng-click="$ctrl.setPage(page)">{{page}}</a>
-            </li>
-            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
-                <a ng-click="$ctrl.setPage($ctrl.pager.currentPage + 1)">Next</a>
-            </li>
-            <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
-                <a ng-click="$ctrl.setPage($ctrl.pager.totalPages)">Last</a>
-            </li>
-        </ul>
-    </div>
+    <div class="col-md-12 text-center">
+            <!-- pager -->
+            <ul ng-if="$ctrl.pager.pages.length" class="pagination">
+                <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
+                    <a ng-click="$ctrl.setPage(1)">First</a>
+                </li>
+                <li ng-class="{disabledPagination:$ctrl.pager.currentPage === 1}">
+                    <a ng-click="$ctrl.setPage($ctrl.pager.currentPage - 1)">Previous</a>
+                </li>
+                <li ng-repeat="page in $ctrl.pager.pages" ng-class="{active:$ctrl.pager.currentPage === page}">
+                    <a ng-click="$ctrl.setPage(page)">{{page}}</a>
+                </li>
+                <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                    <a ng-click="$ctrl.setPage($ctrl.pager.currentPage + 1)">Next</a>
+                </li>
+                <li ng-class="{disabledPagination:$ctrl.pager.currentPage === $ctrl.pager.totalPages}">
+                    <a ng-click="$ctrl.setPage($ctrl.pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
 
 </ui-view>

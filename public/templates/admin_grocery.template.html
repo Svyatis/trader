@@ -1,15 +1,14 @@
-<hr/>
-<a style="margin-left: 45%; font-size: 25px;">Продукти</a>
+<hr/><div>
+    <a style="margin-left: 45%; font-size: 25px;">Продукти</a>
 
-<a data-toggle="modal"
-   data-target="#submit_request"
-   id="myModalShow"
-   class="btn btn-success btn-sm pull-right"
-   style="width: 200px">
-    <span>Добавити товар</span>
-</a>
-
-<hr/>
+    <a data-toggle="modal"
+       data-target="#submit_request"
+       id="myModalShow"
+       class="btn btn-success btn-sm pull-right"
+       style="width: 200px">
+        <span>Добавити товар</span>
+    </a>
+</div><hr/>
 
 <table style="width: 100%">
     <thead>
@@ -34,8 +33,9 @@
         <td>{{groc.type}}</td>
         <td><input type="button" ng-click="$ctrl.main.editModal(groc.id,
                                                             groc.name,
-                                                            groc.price,
                                                             groc.vendor,
+                                                            groc.price,
+                                                            groc.old_price,
                                                             groc.min_quantity,
                                                             groc.max_quantity,
                                                             groc.description,

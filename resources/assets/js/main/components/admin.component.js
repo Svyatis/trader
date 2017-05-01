@@ -44,8 +44,9 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
             },
             data: {file: file,
                     name: $ctrl.create_name,
-                    price: $ctrl.create_price,
                     vendor: $ctrl.create_vendor,
+                    price: $ctrl.create_price,
+                    old_price: $ctrl.create_old_price,
                     min_quantity: $ctrl.create_min_quantity,
                     max_quantity: $ctrl.create_max_quantity,
                     description: $ctrl.create_description,
@@ -66,8 +67,9 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
     $ctrl.update = function(file) {
         var data = {file: file,
             name: $ctrl.edit_name,
-            price: $ctrl.edit_price,
             vendor: $ctrl.edit_vendor,
+            price: $ctrl.edit_price,
+            old_price: $ctrl.edit_old_price,
             min_quantity: $ctrl.edit_min_quantity,
             max_quantity: $ctrl.edit_max_quantity,
             description: $ctrl.edit_description,
@@ -104,11 +106,12 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
 
     };
 
-    $ctrl.editModal = function(id, name, price, vendor, min_q, max_q, description, type, discount) {
+    $ctrl.editModal = function(id, name, vendor, price, old_price, min_q, max_q, description, type, discount) {
         $ctrl.edit_id = id;
         $ctrl.edit_name = name;
-        $ctrl.edit_price = price;
         $ctrl.edit_vendor = vendor;
+        $ctrl.edit_price = price;
+        $ctrl.edit_old_price = old_price;
         $ctrl.edit_min_quantity = min_q;
         $ctrl.edit_max_quantity = max_q;
         $ctrl.edit_description = description;
@@ -127,22 +130,25 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
 
     $ctrl.cancelModal = function() {
         $ctrl.file = null;
-        $('#imgSaveForm').val('');
-        $('#file').val('');
-        $('#create_name').val('');
-        $('#create_vendor').val('');
-        $('#create_price').val('');
-        $('#create_old_price').val('');
-        $('#create_min_quantity').val('');
-        $('#create_max_quantity').val('');
-        $('#create_description').val('');
-        $('#create_type').val('');
-        $('#create_discount_quantity1').val('');
-        $('#create_discount_quantity2').val('');
-        $('#create_discount_quantity3').val('');
-        $('#create_discount_price1').val('');
-        $('#create_discount_price2').val('');
-        $('#create_discount_price3').val('');
+        $ctrl.create_name = null;
+        $ctrl.create_vendor = null;
+        $ctrl.create_price = null;
+        $ctrl.create_old_price = null;
+        $ctrl.create_min_quantity = null;
+        $ctrl.create_max_quantity = null;
+        $ctrl.create_description = null;
+        $ctrl.create_type = null;
+        $ctrl.discount = null;
+
+        $ctrl.edit_name = null;
+        $ctrl.edit_vendor = null;
+        $ctrl.edit_price = null;
+        $ctrl.edit_old_price = null;
+        $ctrl.edit_min_quantity = null;
+        $ctrl.edit_max_quantity = null;
+        $ctrl.edit_description = null;
+        $ctrl.edit_type = null;
+        $ctrl.discount = null;
     };
 
     $ctrl.delete = function(id) {

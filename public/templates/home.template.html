@@ -1,7 +1,38 @@
-<div id="banner">
-    <h2><span>наша компанія</span></h2>
-    <h3><span>ми піклуємось про ваше здоров'я ...</span></h3>
+<!--<div id="banner">-->
+    <!--<h2><span>наша компанія</span></h2>-->
+    <!--<h3><span>ми піклуємось про ваше здоров'я ...</span></h3>-->
+<!--</div>-->
+
+<div class="wrapSlider row" style="border: 1px solid #fff; margin-bottom: 10px;">
+    <div class="your-class">
+        <div style="background: url(/images/alcohol.jpg) no-repeat; height: 200px; background-size: 100% 300px;">
+            <h2 style="padding: 7% 0 0 30%;
+                font-size: 3.3em;
+                color: #fff;
+                text-align: center;">
+                <span style="background-color: black;
+                            border-radius: 10px;">
+                    наша компанія</span></h2>
+            <h3 style="padding-left: 20%;
+                        font-size: 1.6em;
+                        color: #fff;
+                        text-align: center;
+                        text-transform: lowercase;">
+                <span style="background-color: black;
+                            border-radius: 10px;">
+                ми піклуємось про ваше здоров'я ...</span></h3>
+        </div>
+        <div ng-repeat="x in [1,2,3,4,5,6]"><h3 style="background: url(/images/background/{{x}}.jpg) no-repeat;
+        color: #3498db;
+        font-size: 36px;
+        height: 200px;
+        padding: 2%;
+        position: relative;
+        text-align: center;
+        background-size: 100% 300px;"></h3></div>
+    </div>
 </div>
+
 <div class="row">
     <div class="col-md-6">
 

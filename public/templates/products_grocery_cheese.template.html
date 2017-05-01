@@ -16,13 +16,14 @@
         <br><br>
     </div>
 </div>
-<div class="col-md-9 col-sm-9 productsComponent">
+
+<div class="col-md-9 col-sm-9 text-center">
     <div class="products col-md-3 col-sm-3"
          ng-repeat="che in $ctrl.main.groceries | filter: {type: 'cheese'} | filter:$ctrl.query">
         <img ng-src="{{$ctrl.main.path + 'get_image/' + che.id}}" alt="" class="center-block"
-             ui-sref="products.detailed({id: che.id})"/>
+             ui-sref="products.detailed({id: che.id, quan: che.min_quantity})"/>
 
-        <div class="productsDescription" ui-sref="products.detailed({id: che.id})">
+        <div class="productsDescription" ui-sref="products.detailed({id: che.id, quan: che.min_quantity})">
             <h4>{{che.name}}</h4>
             <span>Код товара: U22794</span>
             <p>{{che.price | currency: '₴ '}} грн.</p>

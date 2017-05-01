@@ -10,6 +10,9 @@ module.exports = angular
         controller: DetailedCtrl,
         require: {
             main: '^appMain'
+        },
+        bindings: {
+            data: '<'
         }
     });
 
@@ -17,10 +20,10 @@ module.exports = angular
  * @name DetailedCtrl
  * @memberOf mainModule
  */
-function DetailedCtrl(ngCart, $stateParams, TraderService) {
+function DetailedCtrl(ngCart, $stateParams) {
     var $ctrl = this;
-
-    TraderService.getDetailedProduct($stateParams.id).get().$promise.then(function(response) {
-        $ctrl.product = response.product;
-    })
+    $ctrl.quan = $stateParams.quan;
+    $ctrl.doBack = function() {
+        window.history.back();
+    }
 }

@@ -159,9 +159,9 @@ input[type=password] {
     text-align: center;
 }
 
-input[type=text], input[type=number], input[type=email] {
+input[type=text], input[type=number], input[type=email], textarea {
     background-color: transparent;
-    border: 1px solid rgba(1, 104, 21, 0.6);
+    border: 1px solid rgba(1, 104, 21, 0.6) !important;
     color: #fff;
     text-align: center;
 }
@@ -211,6 +211,16 @@ header .col-md-2, header .col-md-8 {
     opacity: 0.4;
 }
 
+.slick-prev {
+    left: 15px !important;
+    z-index: 5 !important;
+}
+
+.slick-next {
+    right: 15px !important;
+    z-index: 5 !important;
+}
+
 nav {
     height: 100%;
     background-color: black;
@@ -219,10 +229,12 @@ nav {
 nav a {
     height: 100%;
     color: #fff;
-    padding-top: 20px !important;
     text-transform: lowercase;
     font-size: large;
     font-weight: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav a:hover, nav a:active, nav a:focus, nav a:visited {
@@ -259,41 +271,42 @@ nav a:hover, nav a:active, nav a:focus, nav a:visited {
 }
 
 /* Banner */
-#banner {
-    position: relative;
-    height: 265px;
-    box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-    margin: 0 -15px 10px -15px;
-    background: url(/images/alcohol.jpg) no-repeat;
-    /* opacity: 0.7; */
-    background-size: 100% 300px;
-}
+/*#banner {*/
+    /*!*position: relative;*!*/
+    /*height: 200px;*/
+    /*!*box-shadow: inset 0 0 0 1px #fff, 0 1px 4px 0 rgba(0, 0, 0, 0.1);*!*/
+    /*!*margin: 0 -15px 10px -15px;*!*/
+    /*background: url(/images/alcohol.jpg) no-repeat;*/
+    /*!* opacity: 0.7; *!*/
+    /*background-size: 100% 300px;*/
+/*}*/
 
-#banner h2 {
-    padding: 7% 0 0 30%;
-    font-size: 3.3em;
-    color: #fff;
-    text-align: center;
-}
+/*#banner h2 {*/
+    /*padding: 7% 0 0 30%;*/
+    /*font-size: 3.3em;*/
+    /*color: #fff;*/
+    /*text-align: center;*/
+/*}*/
 
-#banner h2 span, #banner h3 span {
-    background-color: black;
-    border-radius: 10px;
-}
+/*#banner h2 span, #banner h3 span {*/
+    /*background-color: black;*/
+    /*border-radius: 10px;*/
+/*}*/
 
-#banner h3 {
-    padding-left: 20%;
-    font-size: 1.6em;
-    color: #fff;
-    text-align: center;
-    text-transform: lowercase;
-}
+/*#banner h3 {*/
+    /*padding-left: 20%;*/
+    /*font-size: 1.6em;*/
+    /*color: #fff;*/
+    /*text-align: center;*/
+    /*text-transform: lowercase;*/
+/*}*/
 
 /* Main */
 #main {
     min-height: 500px;
     background-color: rgba(15,15,15,0.9);
-    padding-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 .loginForm {
@@ -391,11 +404,6 @@ legend.scheduler-border {
 .winesNavBackButton:hover {
     cursor: pointer;
     color: #090909;
-}
-
-.productsComponent {
-    padding: 0;
-    background-color: transparent;
 }
 
 .products {

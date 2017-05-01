@@ -16,4 +16,13 @@ module.exports = angular
      */
     function HomeCtrl() {
         var $ctrl = this;
+
+        $(document).ready(function(){
+            $('.your-class').slick({
+                autoplay: true,
+                autoplaySpeed: 2000
+            });
+        });
+
+
     }

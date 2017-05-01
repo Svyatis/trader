@@ -9,7 +9,17 @@ module.exports = angular
         $stateProvider
             .state('products.wines', { url: '/wines', component: 'productsWinesComponent' })
             .state('products.grocery', { url: '/grocery', component: 'productsGroceryComponent' })
-            .state('products.detailed', { url: '/:id', component: 'detailedComponent'})
+            .state('products.detailed', {   url: '/:id',
+                    component: 'detailedComponent',
+                    resolve: {
+                        data: function (TraderService, $stateParams) {
+                            return TraderService.getDetailedProduct($stateParams.id).get();
+                        }
+                    },
+                    params: {
+                        quan: null
+                    }
+            })
     })
     .component('productsComponent', {
         templateUrl: '/templates/products.template.html',
