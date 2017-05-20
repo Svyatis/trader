@@ -58,6 +58,7 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
         file.upload.then( function ( response ) {
             $ctrl.cancelModal();
             $ctrl.main.getAll();
+            console.log('saved');
         }, function ( response ) {
             if ( response.status > 0 )
                 logger.error( response )
@@ -76,7 +77,7 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
             type: $ctrl.edit_type,
             discount: $ctrl.discount};
 
-        if(file != {}) {
+        if(file !== {}) {
             file={};
             file.upload = Upload.upload( {
                 url: API_URL + 'update_product/' + $ctrl.edit_id,
@@ -124,7 +125,7 @@ function AdminCtrl(TraderService, $state, API_URL, Upload, shareData, $scope) {
         $ctrl.file = API_URL + 'get_image/' + id;
     };
 
-    if(!(sessionStorage.LoggedIn == 'Yes')) {
+    if(!(sessionStorage.LoggedIn === 'Yes')) {
         $state.go("login");
     }
 

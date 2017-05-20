@@ -92,6 +92,24 @@ class WineRepository
     public function saveProduct($attributes) {
         $wine = $this->model->create($attributes);
         $crt = $wine->save();
+        for($x=0;$x<=2;$x++) {
+            if(isset($attributes['discount'][$x])) {
+                $attrs = [
+                    'quantity' => $attributes['discount'][$x]['quantity'],
+                    'price' => $attributes['discount'][$x]['price'],
+                    'wine_id' => $wine['id']
+                ];
+            }
+            else {
+                $attrs = [
+                    'quantity' => null,
+                    'price' => null,
+                    'wine_id' => $wine['id']
+                ];
+            }
+            $this->priceDep->create($attrs);
+        }
+
         if($crt) {
             return response()->json([
                 'status' => 200
